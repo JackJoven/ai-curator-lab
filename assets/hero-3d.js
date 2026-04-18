@@ -1,102 +1,144 @@
 const canvas = document.querySelector("#hero3d");
 
 if (canvas) {
-  initHeroScene(canvas);
+  initMatrixWave(canvas);
 }
 
-async function initHeroScene(canvasElement) {
+function initMatrixWave(canvasElement) {
+  const context = canvasElement.getContext("2d");
+
+  if (!context) {
+    canvasElement.classList.add("is-fallback");
+    return;
+  }
+
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  let THREE;
-
-  try {
-    THREE = await import("https://unpkg.com/three@0.164.1/build/three.module.js");
-  } catch {
-    canvasElement.classList.add("is-fallback");
-    return;
-  }
-
-  let renderer;
-
-  try {
-    renderer = new THREE.WebGLRenderer({
-      canvas: canvasElement,
-      alpha: true,
-      antialias: true,
-      powerPreference: "high-performance",
-    });
-  } catch {
-    canvasElement.classList.add("is-fallback");
-    return;
-  }
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
-  const group = new THREE.Group();
-  const pointer = new THREE.Vector2(0, 0);
-  const clock = new THREE.Clock();
-
-  camera.position.set(0, 0.3, 8);
-  scene.add(group);
-  scene.add(new THREE.AmbientLight(0xffffff, 1.7));
-
-  const keyLight = new THREE.DirectionalLight(0xe9c176, 2.1);
-  keyLight.position.set(4, 6, 6);
-  scene.add(keyLight);
-
-  const fillLight = new THREE.DirectionalLight(0xb5c8df, 1.2);
-  fillLight.position.set(-5, -2, 4);
-  scene.add(fillLight);
-
-  const panelGeometry = new THREE.BoxGeometry(1.05, 0.48, 0.035);
-  const nodeGeometry = new THREE.BoxGeometry(0.075, 0.075, 0.075);
-  const panelMaterials = [
-    new THREE.MeshStandardMaterial({ color: 0xfcf9f8, roughness: 0.62, metalness: 0.02 }),
-    new THREE.MeshStandardMaterial({ color: 0xe9c176, roughness: 0.7, metalness: 0.12 }),
-    new THREE.MeshStandardMaterial({ color: 0xb5c8df, roughness: 0.68, metalness: 0.08 }),
-    new THREE.MeshStandardMaterial({ color: 0xdce6df, roughness: 0.68, metalness: 0.05 }),
-  ];
-  const nodeMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.52, metalness: 0.08 });
-  const lineMaterial = new THREE.LineBasicMaterial({ color: 0xe9c176, transparent: true, opacity: 0.34 });
-  const points = [];
-
-  for (let index = 0; index < 34; index += 1) {
-    const angle = index * 0.74;
-    const radius = 1.65 + (index % 7) * 0.34;
-    const x = Math.cos(angle) * radius;
-    const y = Math.sin(angle * 0.83) * 1.55;
-    const z = -2.8 + (index % 9) * 0.55;
-    const material = panelMaterials[index % panelMaterials.length];
-    const panel = new THREE.Mesh(panelGeometry, material);
-
-    panel.position.set(x, y, z);
-    panel.rotation.set(0.2 * Math.sin(index), angle * 0.12, 0.22 * Math.cos(index * 0.7));
-    panel.scale.setScalar(0.58 + (index % 4) * 0.08);
-    group.add(panel);
-
-    if (index % 2 === 0) {
-      const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
-      node.position.copy(panel.position);
-      node.position.x += 0.72;
-      node.position.y += 0.2;
-      group.add(node);
-      points.push(node.position.clone());
-    }
-  }
-
-  for (let index = 1; index < points.length; index += 1) {
-    const geometry = new THREE.BufferGeometry().setFromPoints([points[index - 1], points[index]]);
-    group.add(new THREE.Line(geometry, lineMaterial));
-  }
+  const pointer = { x: 0, y: 0 };
+  let width = 1;
+  let height = 1;
+  let pixelRatio = 1;
+  let time = 0;
+  let frameId = 0;
 
   const resize = () => {
     const rect = canvasElement.getBoundingClientRect();
-    const width = Math.max(1, rect.width);
-    const height = Math.max(1, rect.height);
+    pixelRatio = Math.min(window.devicePixelRatio || 1, 1.7);
+    width = Math.max(1, rect.width);
+    height = Math.max(1, rect.height);
+    canvasElement.width = Math.floor(width * pixelRatio);
+    canvasElement.height = Math.floor(height * pixelRatio);
+    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+  };
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
-    renderer.setSize(width, height, false);
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
+  const project = (x, y, z) => {
+    const depth = 760;
+    const scale = depth / (depth + z);
+    return {
+      x: width * 0.58 + x * scale,
+      y: height * 0.62 + y * scale,
+      scale,
+    };
+  };
+
+  const drawLine = (start, end, alpha) => {
+    context.beginPath();
+    context.moveTo(start.x, start.y);
+    context.lineTo(end.x, end.y);
+    context.strokeStyle = `rgba(233, 193, 118, ${alpha})`;
+    context.stroke();
+  };
+
+  const draw = () => {
+    const isSmall = width < 760;
+    const spacing = isSmall ? 34 : 42;
+    const columns = isSmall ? 20 : 30;
+    const rows = isSmall ? 16 : 22;
+    const offsetX = -columns * spacing * 0.5;
+    const offsetZ = -rows * spacing * 0.5;
+    const tilt = isSmall ? 0.48 : 0.6;
+    const waveStrength = isSmall ? 44 : 68;
+    const points = [];
+
+    context.clearRect(0, 0, width, height);
+    context.fillStyle = "#162839";
+    context.fillRect(0, 0, width, height);
+
+    const backgroundFade = context.createLinearGradient(0, 0, width, height);
+    backgroundFade.addColorStop(0, "rgba(252, 249, 248, 0.05)");
+    backgroundFade.addColorStop(0.54, "rgba(22, 40, 57, 0)");
+    backgroundFade.addColorStop(1, "rgba(233, 193, 118, 0.08)");
+    context.fillStyle = backgroundFade;
+    context.fillRect(0, 0, width, height);
+
+    for (let row = 0; row < rows; row += 1) {
+      const rowPoints = [];
+
+      for (let column = 0; column < columns; column += 1) {
+        const baseX = offsetX + column * spacing;
+        const baseZ = offsetZ + row * spacing;
+        const distance = Math.hypot(column - columns * 0.55, row - rows * 0.5);
+        const waveA = Math.sin(column * 0.48 + time * 1.15);
+        const waveB = Math.cos(row * 0.52 - time * 0.92);
+        const pulse = Math.sin(distance * 0.42 - time * 1.75);
+        const y = (waveA + waveB + pulse * 0.6) * waveStrength;
+        const x = baseX + pointer.x * 28;
+        const z = baseZ + y * tilt - pointer.y * 42;
+
+        rowPoints.push(project(x, y - 60, z + 420));
+      }
+
+      points.push(rowPoints);
+    }
+
+    context.lineWidth = 1;
+    context.font = "10px Inter, Arial, sans-serif";
+    context.textBaseline = "middle";
+
+    for (let row = 0; row < rows; row += 1) {
+      for (let column = 0; column < columns; column += 1) {
+        const point = points[row][column];
+        const alpha = 0.08 + point.scale * 0.2;
+
+        if (column < columns - 1) {
+          drawLine(point, points[row][column + 1], alpha);
+        }
+
+        if (row < rows - 1) {
+          drawLine(point, points[row + 1][column], alpha * 0.72);
+        }
+      }
+    }
+
+    for (let row = 0; row < rows; row += 1) {
+      for (let column = 0; column < columns; column += 1) {
+        const point = points[row][column];
+        const glow = 0.32 + point.scale * 0.7;
+        const radius = Math.max(1.2, point.scale * 2.8);
+
+        context.beginPath();
+        context.arc(point.x, point.y, radius, 0, Math.PI * 2);
+        context.fillStyle = `rgba(252, 249, 248, ${glow})`;
+        context.fill();
+
+        if ((row + column) % 7 === 0) {
+          context.fillStyle = `rgba(181, 200, 223, ${0.22 + point.scale * 0.28})`;
+          context.fillText("01", point.x + 5, point.y - 5);
+        }
+      }
+    }
+
+    const leftShade = context.createLinearGradient(0, 0, width * 0.72, 0);
+    leftShade.addColorStop(0, "rgba(22, 40, 57, 0.64)");
+    leftShade.addColorStop(0.68, "rgba(22, 40, 57, 0.28)");
+    leftShade.addColorStop(1, "rgba(22, 40, 57, 0)");
+    context.fillStyle = leftShade;
+    context.fillRect(0, 0, width * 0.72, height);
+  };
+
+  const animate = () => {
+    time += prefersReducedMotion.matches ? 0 : 0.018;
+    draw();
+    frameId = window.requestAnimationFrame(animate);
   };
 
   const onPointerMove = (event) => {
@@ -105,24 +147,9 @@ async function initHeroScene(canvasElement) {
     pointer.y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
   };
 
-  const render = () => {
-    const elapsed = clock.getElapsedTime();
-    group.rotation.y = elapsed * 0.055 + pointer.x * 0.12;
-    group.rotation.x = -0.16 + pointer.y * 0.06;
-    group.position.x = pointer.x * 0.18;
-    group.position.y = -pointer.y * 0.12;
-    renderer.render(scene, camera);
-  };
-
-  const animate = () => {
-    render();
-    if (!prefersReducedMotion.matches) {
-      window.requestAnimationFrame(animate);
-    }
-  };
-
   window.addEventListener("resize", resize);
   window.addEventListener("pointermove", onPointerMove, { passive: true });
+  window.addEventListener("pagehide", () => window.cancelAnimationFrame(frameId), { once: true });
   resize();
   animate();
 }
