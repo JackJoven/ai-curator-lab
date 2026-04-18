@@ -405,21 +405,22 @@ textarea {
 .tool-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.68rem;
+  gap: 0.62rem;
+  align-items: start;
 }
 
 .tool-card {
-  min-height: 158px;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.48rem;
-  padding: 0.72rem;
+  gap: 0.38rem;
+  padding: 0.62rem;
 }
 
 .tool-card p {
   margin: 0;
-  font-size: 0.8rem;
-  line-height: 1.38;
+  font-size: 0.78rem;
+  line-height: 1.34;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -429,14 +430,14 @@ textarea {
 .tool-head {
   display: flex;
   justify-content: space-between;
-  gap: 0.48rem;
+  gap: 0.42rem;
   align-items: flex-start;
 }
 
 .tool-identity {
   display: flex;
   align-items: center;
-  gap: 0.58rem;
+  gap: 0.5rem;
   min-width: 0;
 }
 
@@ -445,11 +446,11 @@ textarea {
 }
 
 .tool-logo {
-  width: 2rem;
-  height: 2rem;
+  width: 1.9rem;
+  height: 1.9rem;
   flex: 0 0 auto;
   object-fit: contain;
-  padding: 0.3rem;
+  padding: 0.28rem;
   border-radius: var(--radius);
   background: var(--surface-low);
   box-shadow: inset 0 0 0 1px rgba(196, 198, 205, 0.2);
@@ -467,7 +468,7 @@ textarea {
   margin: 0;
   font-family: Georgia, "Noto Serif SC", "Songti SC", serif;
   color: var(--primary);
-  font-size: 0.94rem;
+  font-size: 0.9rem;
   line-height: 1.18;
   overflow-wrap: anywhere;
 }
@@ -487,18 +488,18 @@ textarea {
 .chip-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.3rem;
+  gap: 0.26rem;
 }
 
 .chip {
   display: inline-flex;
   align-items: center;
-  min-height: 1.34rem;
-  padding: 0.13rem 0.42rem;
+  min-height: 1.25rem;
+  padding: 0.1rem 0.36rem;
   border-radius: 999px;
   background: var(--chip);
   color: var(--muted);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   white-space: nowrap;
 }
 
@@ -966,8 +967,8 @@ details ul {
   }
 
   .tool-card {
-    min-height: 150px;
-    padding: 0.72rem;
+    min-height: 0;
+    padding: 0.62rem;
   }
 }
 
