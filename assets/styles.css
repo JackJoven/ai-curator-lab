@@ -226,7 +226,7 @@ textarea {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: rgba(22, 40, 57, 0.44);
+  background: rgba(22, 40, 57, 0.34);
 }
 
 .hero-canvas {
@@ -244,9 +244,126 @@ textarea {
   background: var(--primary) url("https://lh3.googleusercontent.com/aida-public/AB6AXuBqwTEaeNXxVK9WjUdpp5NSyJoOjG-cwBVui94Ox70i4nFUoasrm0X2ikIlmNX5SCyDOYJgp59jRC7GKYDdfokWUf1XcclUeRN0im70lfEbhfXwoylmW3BjjaDsRjm_fze0k9oTxqx7JWFsBYRyxwn2T8THy3To1d0kb34QhFrKuJAE8izIzP1lMHRnoorAUnEvN-vQN9MS_FC-1FcBwAyQJppOu9GauZOQk-FMekpVD192NC7t2jaoaJkLBbXacbWC6PYlyD7GGyTL") center / cover no-repeat;
 }
 
+.hero-3d-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 7rem max(1.4rem, calc((100vw - 1180px) / 2)) 4rem;
+  pointer-events: none;
+  perspective: 1100px;
+}
+
+.hero-3d-orbit {
+  position: relative;
+  width: min(42vw, 560px);
+  height: min(56vh, 520px);
+  min-width: 420px;
+  min-height: 390px;
+  transform-style: preserve-3d;
+  animation: heroOrbit 18s linear infinite;
+}
+
+.hero-3d-core,
+.hero-3d-card {
+  position: absolute;
+  border-radius: var(--radius);
+  box-shadow: 0 32px 56px -24px rgba(0, 0, 0, 0.42);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.hero-3d-core {
+  left: 50%;
+  top: 50%;
+  width: 8.4rem;
+  height: 8.4rem;
+  display: grid;
+  place-items: center;
+  color: var(--primary);
+  background: rgba(252, 249, 248, 0.92);
+  transform: translate3d(-50%, -50%, 90px) rotateX(58deg) rotateZ(45deg);
+}
+
+.hero-3d-core span {
+  transform: rotateZ(-45deg);
+  font-family: Georgia, "Noto Serif SC", "Songti SC", serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+.hero-3d-card {
+  width: 12.4rem;
+  min-height: 7.2rem;
+  padding: 1rem;
+  color: var(--primary);
+  background: rgba(252, 249, 248, 0.9);
+}
+
+.hero-3d-card span,
+.hero-3d-card small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.hero-3d-card strong {
+  display: block;
+  margin: 0.18rem 0;
+  font-family: Georgia, "Noto Serif SC", "Songti SC", serif;
+  font-size: 1.75rem;
+  line-height: 1.1;
+}
+
+.hero-3d-card.card-a {
+  left: 7%;
+  top: 5%;
+  transform: translateZ(150px) rotateY(-28deg) rotateX(8deg);
+}
+
+.hero-3d-card.card-b {
+  right: 0;
+  top: 18%;
+  background: rgba(233, 193, 118, 0.9);
+  transform: translateZ(90px) rotateY(34deg) rotateX(-8deg);
+}
+
+.hero-3d-card.card-c {
+  left: 2%;
+  bottom: 11%;
+  background: rgba(181, 200, 223, 0.92);
+  transform: translateZ(40px) rotateY(-38deg) rotateX(-10deg);
+}
+
+.hero-3d-card.card-d {
+  right: 11%;
+  bottom: 0;
+  background: rgba(220, 230, 223, 0.92);
+  transform: translateZ(130px) rotateY(26deg) rotateX(10deg);
+}
+
+@keyframes heroOrbit {
+  0% {
+    transform: rotateX(58deg) rotateZ(-18deg) rotateY(0deg);
+  }
+
+  100% {
+    transform: rotateX(58deg) rotateZ(-18deg) rotateY(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-3d-orbit {
+    animation: none;
+    transform: rotateX(58deg) rotateZ(-18deg) rotateY(-24deg);
+  }
+}
+
 .hero-inner {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: min(1180px, 100%);
   margin: 0 auto;
 }
@@ -915,6 +1032,19 @@ details ul {
     padding-bottom: 3rem;
   }
 
+  .hero-3d-stage {
+    justify-content: center;
+    opacity: 0.42;
+    padding-top: 6rem;
+  }
+
+  .hero-3d-orbit {
+    width: 420px;
+    height: 380px;
+    min-width: 0;
+    min-height: 0;
+  }
+
   .hero-copy h1,
   .page-hero h1 {
     font-size: 2.8rem;
@@ -973,6 +1103,11 @@ details ul {
   .hero-home {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .hero-3d-stage {
+    opacity: 0.28;
+    transform: translateY(-1rem) scale(0.78);
   }
 
   .feature-card,
