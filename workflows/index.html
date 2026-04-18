@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI 工作流 | AI Curator Lab</title>
+    <meta name="description" content="整理可复用的 AI 工作流和 Prompt 方法。">
+    <link rel="stylesheet" href="../assets/styles.css">
+    <script defer src="../assets/site.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <header class="site-header">
+      <nav class="nav-wrap" aria-label="主导航">
+        <a class="brand" href="../index.html">AI Curator Lab</a>
+        <ul class="nav-list">
+          <li><a href="../index.html">首页</a></li>
+          <li><a href="../ai-tools/index.html">AI 工具</a></li>
+          <li><a href="../blog/index.html">博客</a></li>
+          <li><a href="../projects/index.html">项目</a></li>
+          <li><a aria-current="page" href="../workflows/index.html">工作流</a></li>
+          <li><a href="../about/index.html">关于</a></li>
+        </ul>
+        <a class="header-action" href="../about/index.html#contact">联系我</a>
+        <button class="menu-toggle" type="button" aria-label="打开导航" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button>
+      </nav>
+      <div class="mobile-menu" hidden data-mobile-menu>
+        <a href="../index.html">首页</a>
+        <a href="../ai-tools/index.html">AI 工具</a>
+        <a href="../blog/index.html">博客</a>
+        <a href="../projects/index.html">项目</a>
+        <a href="../workflows/index.html">工作流</a>
+        <a href="../about/index.html">关于</a>
+      </div>
+    </header>
+
+    <main id="main" class="page-shell">
+      <header class="page-hero">
+        <div>
+          <p class="kicker">Workflows</p>
+          <h1>AI 工作流</h1>
+          <p>工具只是零件，工作流才是结果。这里整理可复用的步骤、输入材料和 Prompt 模板。</p>
+        </div>
+      </header>
+
+      <section class="page-content">
+        <div class="grid-3" style="margin-bottom: 4rem;">
+          <article class="workflow-card"><h2 class="feature-title">写周报</h2><p>从零散记录中提取进展、风险、下周计划和可同步给团队的版本。</p><span class="chip">入门</span></article>
+          <article class="workflow-card"><h2 class="feature-title">竞品分析</h2><p>收集资料、提取功能差异、整理定位和输出对比表。</p><span class="chip">中阶</span></article>
+          <article class="workflow-card"><h2 class="feature-title">代码评审</h2><p>让 AI 先扫风险点，再由开发者复核行为、测试和边界条件。</p><span class="chip">中阶</span></article>
+        </div>
+
+        <article>
+          <p class="kicker">Featured Workflow</p>
+          <h2 class="detail-heading">用 AI 写一份不空泛的周报</h2>
+          <p style="max-width: 760px; color: var(--muted);">适合已经有会议记录、任务列表、提交记录或聊天记录，但不想从空白页开始整理的人。</p>
+
+          <ol class="workflow-steps" style="margin-top: 2rem;">
+            <li><strong>收集输入。</strong><br>准备本周完成事项、进行中事项、遇到的问题、关键沟通和下周目标。</li>
+            <li><strong>让 AI 归类。</strong><br>要求模型把内容分成成果、风险、协作、下周计划，并删除重复表达。</li>
+            <li><strong>人工补判断。</strong><br>补上优先级、影响范围、阻塞原因和需要谁支持。</li>
+            <li><strong>生成两个版本。</strong><br>一个给自己复盘，一个给团队同步。前者保留细节，后者强调结论。</li>
+            <li><strong>检查语气。</strong><br>删除夸张表达，保留事实、数字、链接和下一步。</li>
+          </ol>
+
+          <div class="quote-block">
+            <strong>Prompt 草稿：</strong><br>
+            你是我的项目助理。请根据以下零散记录整理周报，输出四部分：本周完成、进行中、风险与阻塞、下周计划。要求语言具体，不写空泛形容词，每条都给出可验证的事实或下一步。
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer"><div class="footer-inner"><div><strong>AI Curator Lab</strong><br>把工具组合成可重复的生产力。</div><div><a href="../about/index.html#contact">联系</a></div></div></footer>
+  </body>
+</html>

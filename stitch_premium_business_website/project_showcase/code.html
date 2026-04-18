@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Selected Works - The Modern Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#eae7e7",
+                        "on-primary-container": "#96a9be",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#261900",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c4c6cd",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-container-low": "#f6f3f2",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#e2dfde",
+                        "tertiary-fixed": "#ffdea5",
+                        "on-secondary-fixed-variant": "#474746",
+                        "primary-container": "#2c3e50",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-surface-variant": "#43474c",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-tint": "#4e6073",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface-container": "#f0eded",
+                        "secondary": "#5f5e5e",
+                        "on-secondary-container": "#636262",
+                        "on-tertiary-fixed-variant": "#5d4201",
+                        "on-primary-fixed-variant": "#36485b",
+                        "surface": "#fcf9f8",
+                        "surface-bright": "#fcf9f8",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "surface-variant": "#e5e2e1",
+                        "tertiary-container": "#503800",
+                        "tertiary": "#342400",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dcd9d9",
+                        "background": "#fcf9f8",
+                        "primary": "#162839",
+                        "on-primary-fixed": "#091d2e",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#e9c176",
+                        "on-background": "#1c1b1b",
+                        "on-surface": "#1c1b1b",
+                        "outline": "#74777d",
+                        "primary-fixed-dim": "#b5c8df",
+                        "inverse-surface": "#313030",
+                        "inverse-primary": "#b5c8df",
+                        "primary-fixed": "#d1e4fb",
+                        "on-tertiary-container": "#c7a15a"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    fontFamily: {
+                        "headline": ["Noto Serif", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.surface');
+            color: theme('colors.on-surface');
+            font-family: theme('fontFamily.body');
+        }
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined', sans-serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl no-border tonal-transition bg-slate-100 dark:bg-slate-900 shadow-sm dark:shadow-none transition-transform duration-200">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-serif italic text-slate-900 dark:text-slate-100 font-headline">
+                The Curator
+            </div>
+<div class="hidden md:flex space-x-8 items-center font-label text-sm font-medium">
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hover:opacity-80 transition-opacity duration-300" href="#">AI Tools</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hover:opacity-80 transition-opacity duration-300" href="#">Blog</a>
+<a class="text-slate-900 dark:text-white font-semibold border-b-2 border-amber-800 dark:border-amber-400 pb-1 hover:opacity-80 transition-opacity duration-300" href="#">Projects</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hover:opacity-80 transition-opacity duration-300" href="#">Workflows</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hover:opacity-80 transition-opacity duration-300" href="#">About</a>
+</div>
+<div>
+<a class="hidden md:inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-on-primary bg-gradient-to-br from-primary to-primary-container rounded-DEFAULT hover:opacity-90 transition-opacity" href="#">
+                    Get in Touch
+                </a>
+<button class="md:hidden text-on-surface p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-32 pb-24 px-8 max-w-7xl mx-auto w-full">
+<!-- Header Section -->
+<header class="mb-20 max-w-3xl">
+<p class="text-xs tracking-widest uppercase font-semibold text-tertiary mb-4 font-label">Curated Portfolio</p>
+<h1 class="text-5xl md:text-7xl font-headline font-normal text-on-surface leading-tight mb-6">
+                Selected Works
+            </h1>
+<p class="text-lg text-on-surface-variant font-body leading-relaxed max-w-2xl">
+                A collection of digital products, editorial platforms, and AI-driven interfaces. Designed with intention, built for clarity.
+            </p>
+</header>
+<!-- Projects Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-y-24 gap-x-8">
+<!-- Project 1: Featured Large -->
+<article class="col-span-1 md:col-span-12 group">
+<div class="flex flex-col md:flex-row gap-12 items-center">
+<div class="w-full md:w-7/12 relative aspect-[4/3] overflow-hidden rounded-lg bg-surface-container-low shadow-[0_20px_40px_rgba(28,27,27,0.06)]">
+<img alt="Abstract architectural rendering with soft lighting and deep shadows" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Abstract architectural 3D rendering with soft cinematic lighting, deep charcoal shadows, and matte concrete textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3lIGvs56jeGZIl_bhVceFt7omcYMyKe7HGwhqjLHryzqZHpHrGV4z3U-EwY-Za94tXG5t8n8NS3HcS9_IvPkQfgl4ev4XrpeFE9J35rN94bYQ-Se2l41Nb24mI6plkOAlz-zZLSZHms8U7m4OJqj_ir8v56IAhxLrTviogifE-fGzUhelvXnf3952LBvJQ9ELbNCIj3HntvprwcBtjAJhS8-7tVfmqx-fxGm7mg3XLB8mbYZNESL_r2CprtEUE5SSnvaVSApByWHM"/>
+<div class="absolute top-6 right-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-surface-container-lowest/90 backdrop-blur-md text-primary border border-outline-variant/20">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-2"></span>Live
+                            </span>
+</div>
+</div>
+<div class="w-full md:w-5/12 flex flex-col justify-center">
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 bg-secondary-container rounded-full text-xs font-label text-on-surface-variant uppercase tracking-wider">Next.js</span>
+<span class="px-3 py-1 bg-secondary-container rounded-full text-xs font-label text-on-surface-variant uppercase tracking-wider">Tailwind</span>
+<span class="px-3 py-1 bg-secondary-container rounded-full text-xs font-label text-on-surface-variant uppercase tracking-wider">OpenAI API</span>
+</div>
+<h2 class="text-4xl font-headline text-on-surface mb-4">Lumina AI Platform</h2>
+<p class="text-base text-on-surface-variant font-body mb-8 leading-relaxed">
+                            An enterprise intelligence dashboard that redefines data visualization. Moving away from cluttered metrics, Lumina uses editorial layouts and generous whitespace to present AI-generated insights with clarity and focus.
+                        </p>
+<a class="inline-flex items-center text-tertiary font-medium text-sm border-b border-tertiary/30 pb-1 hover:border-tertiary transition-colors w-max" href="#">
+                            View Case Study <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Project 2: Half Width -->
+<article class="col-span-1 md:col-span-6 group mt-12 md:mt-0">
+<div class="relative aspect-[4/5] overflow-hidden rounded-lg bg-surface-container-low mb-8 shadow-[0_20px_40px_rgba(28,27,27,0.04)]">
+<img alt="Minimalist typography poster design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Minimalist editorial layout design featuring elegant serif typography on a soft off-white textured paper background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7Gj_8Jid0xZlTquvnU_lRHiWNmSMjgY2IpRTcpvcMECbmLt_JMeEY6S4RONVhMf1ygyn-3yhak3_uhS7hxntU_4ZXNlEN7P6RcDsJNRvxtipfcmqAW8eVE8BG41b_AmUoat5ZYGEzsqcQKYuZIh0s0wYdI-cdPow3DCecXlZH6aXYYUGm_nziWraQ43nFTfuOEmWWWDpyP36TuvnramB8MnKy97BRNBpxM0jGbhT2uVo2gXXIt-x6IRYbXvUSZKkzO7McxE78PUES"/>
+<div class="absolute top-6 left-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-surface-container-lowest/90 backdrop-blur-md text-primary border border-outline-variant/20">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500 mr-2"></span>In Progress
+                        </span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-3 py-1 bg-secondary-container rounded-full text-xs font-label text-on-surface-variant uppercase tracking-wider">React</span>
+<span class="px-3 py-1 bg-secondary-container rounded-full text-xs font-label text-on-surface-variant uppercase tracking-wider">Framer Motion</span>
+</div>
+<h3 class="text-2xl font-headline text-on-surface mb-3">The Daily Brief</h3>
+<p class="text-sm text-on-surface-variant font-body mb-6 leading-relaxed">
+                    A personalized news aggregator designed like a high-end broadsheet. Focuses on typographic hierarchy and distraction-free reading modes.
+                </p>
+</article>
+<!-- Project 3: Half Width -->
+<article class="col-span-1 md:col-span-6 group mt-12 md:mt-0 md:pt-24">
+<div class="relative aspect-[4/5] overflow-hidden rounded-lg bg-surface-container-low mb-8 shadow-[0_20px_40px_rgba(28,27,27,0.04)]">
+<img alt="Abstract dark mode UI design elements" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close up of a sleek dark mode user interface featuring subtle neon accents and blurred translucent glass panels" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW7WlpnCQjhCWuyDgzp6aFhzBIKT4Y0oh_pZ1NVN4xbY_qumshWtJew3vkbJJ4_Ti1ULB44u-vtb_47VNEcPWj3BkglVvWStLbeXnhGc0pUjxC-Jv1MKti_2ElVmcoKzyxjfsM79u_M7D3WCRPU7kZKMMBqJGcINyOtadDJqQ5mqpqIqMwIWDquT3ZJXf-7sn6P4AjexVyIPLnwa8vicyJvOoTWEPPtez-i_PRmc57CqYoQJr41KEJ58YkIMDuUARRGEdwbDoMrcrK"/>
+<div class="absolute top-6 left-6">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-surface-container-lowest/90 backdrop-blur-md text-primary border border-outline-variant/20">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-2"></span>Live
+                        </span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-3 py-1 bg-secondary-container rounded-full text-xs font-label text-on-surface-variant uppercase tracking-wider">Vue.js</span>
+<span class="px-3 py-1 bg-secondary-container rounded-full text-xs font-label text-on-surface-variant uppercase tracking-wider">WebGL</span>
+</div>
+<h3 class="text-2xl font-headline text-on-surface mb-3">Aura Analytics</h3>
+<p class="text-sm text-on-surface-variant font-body mb-6 leading-relaxed">
+                    Financial technology interface that translates complex algorithmic trading data into serene, ambient visualscapes.
+                </p>
+</article>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 px-8 mt-24 bg-slate-100 dark:bg-slate-900 tonal-shift-from-surface-to-container-low flat no-shadows">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+<div>
+<div class="text-xl font-serif text-slate-900 dark:text-slate-100 mb-4 font-headline italic text-slate-800 dark:text-slate-200">
+                    The Curator
+                </div>
+<p class="text-sm text-slate-500 dark:text-slate-400 font-body">
+                    © 2024 The Modern Curator. All rights reserved.
+                </p>
+</div>
+<div class="flex flex-wrap gap-8 font-label text-sm">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:translate-x-1 transition-transform duration-200 focus:ring-1 focus:ring-amber-500 rounded px-1" href="#">Contact</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:translate-x-1 transition-transform duration-200 focus:ring-1 focus:ring-amber-500 rounded px-1" href="#">LinkedIn</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:translate-x-1 transition-transform duration-200 focus:ring-1 focus:ring-amber-500 rounded px-1" href="#">GitHub</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:translate-x-1 transition-transform duration-200 focus:ring-1 focus:ring-amber-500 rounded px-1" href="#">Newsletter</a>
+</div>
+</div>
+</footer>
+</body></html>

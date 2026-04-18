@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blog - The Modern Curator</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#ffffff",
+                      "surface-container-high": "#eae7e7",
+                      "on-primary-container": "#96a9be",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#261900",
+                      "on-error-container": "#93000a",
+                      "outline-variant": "#c4c6cd",
+                      "inverse-on-surface": "#f3f0ef",
+                      "surface-container-low": "#f6f3f2",
+                      "error": "#ba1a1a",
+                      "secondary-container": "#e2dfde",
+                      "tertiary-fixed": "#ffdea5",
+                      "on-secondary-fixed-variant": "#474746",
+                      "primary-container": "#2c3e50",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "on-surface-variant": "#43474c",
+                      "surface-container-highest": "#e5e2e1",
+                      "surface-tint": "#4e6073",
+                      "secondary-fixed": "#e5e2e1",
+                      "surface-container": "#f0eded",
+                      "secondary": "#5f5e5e",
+                      "on-secondary-container": "#636262",
+                      "on-tertiary-fixed-variant": "#5d4201",
+                      "on-primary-fixed-variant": "#36485b",
+                      "surface": "#fcf9f8",
+                      "surface-bright": "#fcf9f8",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "surface-variant": "#e5e2e1",
+                      "tertiary-container": "#503800",
+                      "tertiary": "#342400",
+                      "on-primary": "#ffffff",
+                      "surface-dim": "#dcd9d9",
+                      "background": "#fcf9f8",
+                      "primary": "#162839",
+                      "on-primary-fixed": "#091d2e",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#e9c176",
+                      "on-background": "#1c1b1b",
+                      "on-surface": "#1c1b1b",
+                      "outline": "#74777d",
+                      "primary-fixed-dim": "#b5c8df",
+                      "inverse-surface": "#313030",
+                      "inverse-primary": "#b5c8df",
+                      "primary-fixed": "#d1e4fb",
+                      "on-tertiary-container": "#c7a15a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": [
+                              "Noto Serif"
+                      ],
+                      "body": [
+                              "Inter"
+                      ],
+                      "label": [
+                              "Inter"
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased min-h-screen flex flex-col">
+<!-- TopNavBar (Generated from JSON) -->
+<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl no-border tonal-transition shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
+<!-- Brand Logo -->
+<a class="text-2xl font-serif italic text-slate-900 dark:text-slate-100" href="#">
+                The Curator
+            </a>
+<!-- Navigation Links (Desktop) -->
+<ul class="hidden md:flex items-center space-x-8 text-sm font-body">
+<li>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hover:opacity-80 transition-opacity duration-300" href="#">AI Tools</a>
+</li>
+<li>
+<a class="text-slate-900 dark:text-white font-semibold border-b-2 border-amber-800 dark:border-amber-400 pb-1 hover:opacity-80 transition-opacity duration-300" href="#">Blog</a>
+</li>
+<li>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hover:opacity-80 transition-opacity duration-300" href="#">Projects</a>
+</li>
+<li>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hover:opacity-80 transition-opacity duration-300" href="#">Workflows</a>
+</li>
+<li>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors hover:opacity-80 transition-opacity duration-300" href="#">About</a>
+</li>
+</ul>
+<!-- Trailing Action -->
+<div class="hidden md:block">
+<a class="text-xs tracking-widest uppercase font-semibold text-amber-900 dark:text-amber-200 hover:opacity-80 transition-opacity duration-300" href="#">
+                    Get in Touch
+                </a>
+</div>
+<!-- Mobile Menu Icon (Simplified for structure) -->
+<button class="md:hidden text-slate-900 dark:text-slate-100">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow pt-32 pb-24 px-6 md:px-12 max-w-5xl mx-auto w-full">
+<!-- Header Section -->
+<header class="mb-16 md:mb-24">
+<p class="font-label text-xs uppercase tracking-widest text-tertiary mb-4">The Journal</p>
+<h1 class="font-headline text-5xl md:text-6xl text-primary font-bold leading-tight max-w-3xl">
+                Insights &amp; Reflections
+            </h1>
+<p class="font-body text-lg text-on-surface-variant mt-6 max-w-2xl leading-relaxed">
+                Curated thoughts on design systems, artificial intelligence, and the evolving landscape of high-end digital editorial.
+            </p>
+</header>
+<!-- Filters Section -->
+<div class="flex flex-wrap gap-4 mb-16 items-center border-l-4 border-surface-container-high pl-4">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant mr-2">Filter by:</span>
+<button class="font-label text-sm font-semibold text-primary bg-secondary-container px-4 py-1.5 rounded-full hover:bg-surface-container-high transition-colors">
+                All
+            </button>
+<button class="font-label text-sm text-on-surface-variant hover:text-primary transition-colors px-2 py-1">
+                Design Systems
+            </button>
+<button class="font-label text-sm text-on-surface-variant hover:text-primary transition-colors px-2 py-1">
+                AI &amp; Tools
+            </button>
+<button class="font-label text-sm text-on-surface-variant hover:text-primary transition-colors px-2 py-1">
+                Typography
+            </button>
+<button class="font-label text-sm text-on-surface-variant hover:text-primary transition-colors px-2 py-1">
+                Culture
+            </button>
+</div>
+<!-- Blog List (Asymmetric Editorial Layout) -->
+<div class="flex flex-col gap-16 md:gap-24">
+<!-- Post Item 1 -->
+<article class="group flex flex-col md:flex-row gap-4 md:gap-12 cursor-pointer">
+<div class="md:w-1/4 flex-shrink-0 pt-1">
+<p class="font-label text-xs text-on-surface-variant mb-1">Oct 12, 2024</p>
+<p class="font-label text-xs uppercase tracking-widest text-tertiary">Design Systems</p>
+</div>
+<div class="md:w-3/4 flex flex-col gap-3">
+<h2 class="font-headline text-3xl text-primary font-bold group-hover:text-tertiary transition-colors duration-300 leading-snug">
+                        The Death of the Grid: Embracing Asymmetry in Modern UIs
+                    </h2>
+<p class="font-body text-base text-on-surface-variant leading-relaxed">
+                        A deep dive into why rigid column layouts are failing modern brand narratives. We explore techniques for organic content flow that mimics physical editorial composition rather than database constraints.
+                    </p>
+</div>
+</article>
+<!-- Post Item 2 -->
+<article class="group flex flex-col md:flex-row gap-4 md:gap-12 cursor-pointer">
+<div class="md:w-1/4 flex-shrink-0 pt-1">
+<p class="font-label text-xs text-on-surface-variant mb-1">Sep 28, 2024</p>
+<p class="font-label text-xs uppercase tracking-widest text-tertiary">AI &amp; Tools</p>
+</div>
+<div class="md:w-3/4 flex flex-col gap-3">
+<h2 class="font-headline text-3xl text-primary font-bold group-hover:text-tertiary transition-colors duration-300 leading-snug">
+                        Curating Context over Content
+                    </h2>
+<p class="font-body text-base text-on-surface-variant leading-relaxed">
+                        As generative tools commoditize the creation of assets, the real value shifts entirely to curation. Discover how to build interfaces that prioritize relevance and intent over sheer volume.
+                    </p>
+</div>
+</article>
+<!-- Post Item 3 -->
+<article class="group flex flex-col md:flex-row gap-4 md:gap-12 cursor-pointer">
+<div class="md:w-1/4 flex-shrink-0 pt-1">
+<p class="font-label text-xs text-on-surface-variant mb-1">Sep 15, 2024</p>
+<p class="font-label text-xs uppercase tracking-widest text-tertiary">Typography</p>
+</div>
+<div class="md:w-3/4 flex flex-col gap-3">
+<h2 class="font-headline text-3xl text-primary font-bold group-hover:text-tertiary transition-colors duration-300 leading-snug">
+                        Tension in Typography: Pairing Noto and Inter
+                    </h2>
+<p class="font-body text-base text-on-surface-variant leading-relaxed">
+                        An exploration of the editorial tension created by mixing high-contrast serif letterforms with precise, geometric sans-serifs. We analyze how to maintain structural authority without sacrificing legibility.
+                    </p>
+</div>
+</article>
+<!-- Post Item 4 -->
+<article class="group flex flex-col md:flex-row gap-4 md:gap-12 cursor-pointer">
+<div class="md:w-1/4 flex-shrink-0 pt-1">
+<p class="font-label text-xs text-on-surface-variant mb-1">Aug 30, 2024</p>
+<p class="font-label text-xs uppercase tracking-widest text-tertiary">Culture</p>
+</div>
+<div class="md:w-3/4 flex flex-col gap-3">
+<h2 class="font-headline text-3xl text-primary font-bold group-hover:text-tertiary transition-colors duration-300 leading-snug">
+                        The No-Line Rule in Practice
+                    </h2>
+<p class="font-body text-base text-on-surface-variant leading-relaxed">
+                        Practical examples of defining structural boundaries through subtle tonal depth and generous whitespace, rather than relying on hard borders that clutter the visual hierarchy.
+                    </p>
+</div>
+</article>
+</div>
+<!-- Simple Pagination -->
+<div class="mt-24 pt-12 flex justify-between items-center bg-surface-container-low px-8 py-6">
+<button class="font-label text-sm text-tertiary hover:opacity-70 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">arrow_left_alt</span>
+                Older Posts
+            </button>
+<span class="font-label text-xs text-on-surface-variant tracking-widest uppercase">Page 1 of 4</span>
+<button class="font-label text-sm text-surface-container-high cursor-not-allowed flex items-center gap-2" disabled="">
+                Newer Posts
+                <span class="material-symbols-outlined text-sm">arrow_right_alt</span>
+</button>
+</div>
+</main>
+<!-- Footer (Generated from JSON) -->
+<footer class="w-full py-16 px-8 mt-24 bg-slate-100 dark:bg-slate-900 tonal-shift-from-surface-to-container-low flat no-shadows">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+<!-- Brand & Copyright -->
+<div class="flex flex-col gap-4">
+<p class="text-xl font-serif text-slate-900 dark:text-slate-100">
+                    The Curator
+                </p>
+<p class="font-serif text-lg italic text-slate-800 dark:text-slate-200">
+                    © 2024 The Modern Curator. All rights reserved.
+                </p>
+</div>
+<!-- Footer Links -->
+<div class="flex flex-wrap gap-8">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:translate-x-1 transition-transform duration-200 focus:ring-1 focus:ring-amber-500 font-body text-sm" href="#">
+                    Contact
+                </a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:translate-x-1 transition-transform duration-200 focus:ring-1 focus:ring-amber-500 font-body text-sm" href="#">
+                    LinkedIn
+                </a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:translate-x-1 transition-transform duration-200 focus:ring-1 focus:ring-amber-500 font-body text-sm" href="#">
+                    GitHub
+                </a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:translate-x-1 transition-transform duration-200 focus:ring-1 focus:ring-amber-500 font-body text-sm" href="#">
+                    Newsletter
+                </a>
+</div>
+</div>
+</footer>
+</body></html>

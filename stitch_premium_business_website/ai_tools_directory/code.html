@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Curated AI Toolkit | The Modern Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#ffffff",
+                      "surface-container-high": "#eae7e7",
+                      "on-primary-container": "#96a9be",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#261900",
+                      "on-error-container": "#93000a",
+                      "outline-variant": "#c4c6cd",
+                      "inverse-on-surface": "#f3f0ef",
+                      "surface-container-low": "#f6f3f2",
+                      "error": "#ba1a1a",
+                      "secondary-container": "#e2dfde",
+                      "tertiary-fixed": "#ffdea5",
+                      "on-secondary-fixed-variant": "#474746",
+                      "primary-container": "#2c3e50",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "on-surface-variant": "#43474c",
+                      "surface-container-highest": "#e5e2e1",
+                      "surface-tint": "#4e6073",
+                      "secondary-fixed": "#e5e2e1",
+                      "surface-container": "#f0eded",
+                      "secondary": "#5f5e5e",
+                      "on-secondary-container": "#636262",
+                      "on-tertiary-fixed-variant": "#5d4201",
+                      "on-primary-fixed-variant": "#36485b",
+                      "surface": "#fcf9f8",
+                      "surface-bright": "#fcf9f8",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "surface-variant": "#e5e2e1",
+                      "tertiary-container": "#503800",
+                      "tertiary": "#342400",
+                      "on-primary": "#ffffff",
+                      "surface-dim": "#dcd9d9",
+                      "background": "#fcf9f8",
+                      "primary": "#162839",
+                      "on-primary-fixed": "#091d2e",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#e9c176",
+                      "on-background": "#1c1b1b",
+                      "on-surface": "#1c1b1b",
+                      "outline": "#74777d",
+                      "primary-fixed-dim": "#b5c8df",
+                      "inverse-surface": "#313030",
+                      "inverse-primary": "#b5c8df",
+                      "primary-fixed": "#d1e4fb",
+                      "on-tertiary-container": "#c7a15a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": [
+                              "Noto Serif"
+                      ],
+                      "body": [
+                              "Inter"
+                      ],
+                      "label": [
+                              "Inter"
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        /* Ambient shadow utility as per design system */
+        .shadow-ambient {
+            box-shadow: 0 40px 60px -15px rgba(28, 27, 27, 0.05);
+        }
+        /* Primary CTA Gradient */
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #162839 0%, #2c3e50 100%);
+        }
+        /* Custom ghost border focus ring */
+        .focus-ghost-ring:focus-within {
+            outline: 1px solid #e9c176; /* tertiary-fixed-dim */
+            background-color: #ffffff; /* surface-container-lowest */
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased min-h-screen flex flex-col pt-24">
+<!-- TopNavBar Shared Component -->
+<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-sm dark:shadow-none bg-surface/90 backdrop-blur-md transition-all duration-300">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
+<!-- Brand -->
+<a class="text-2xl font-headline italic text-primary dark:text-slate-100 hover:opacity-80 transition-opacity duration-300" href="#">
+                The Curator
+            </a>
+<!-- Links (Desktop) -->
+<div class="hidden md:flex items-center gap-8">
+<!-- Active Link -->
+<a class="text-primary font-semibold border-b-2 border-tertiary-fixed-dim pb-1 font-label hover:opacity-80 transition-opacity duration-300" href="#">AI Tools</a>
+<!-- Inactive Links -->
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label hover:opacity-80 duration-300" href="#">Blog</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label hover:opacity-80 duration-300" href="#">Projects</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label hover:opacity-80 duration-300" href="#">Workflows</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label hover:opacity-80 duration-300" href="#">About</a>
+</div>
+<!-- Trailing Action -->
+<button class="hidden md:inline-flex items-center justify-center px-6 py-2 bg-gradient-primary text-on-primary rounded-lg font-label font-medium hover:opacity-80 transition-opacity duration-300 active:scale-95 ease-in-out">
+                Get in Touch
+            </button>
+<!-- Mobile Menu Toggle (Visual only) -->
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</nav>
+<!-- Header / Hero Section -->
+<header class="w-full max-w-7xl mx-auto px-8 py-20 lg:py-32 flex flex-col lg:flex-row items-start justify-between gap-16">
+<div class="lg:w-7/12 flex flex-col gap-6">
+<span class="text-xs tracking-widest uppercase font-semibold text-tertiary font-label">Directory</span>
+<h1 class="text-5xl lg:text-7xl font-headline text-primary leading-tight">
+                Curated AI Toolkit
+            </h1>
+<p class="text-lg lg:text-xl text-on-surface-variant leading-relaxed max-w-2xl font-body">
+                A meticulously selected collection of artificial intelligence tools, evaluated for utility, precision, and architectural elegance. We look past the hype to present instruments that genuinely elevate professional workflows.
+            </p>
+</div>
+<div class="lg:w-4/12 w-full mt-8 lg:mt-0 relative group focus-ghost-ring rounded-lg transition-all duration-300">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="w-full bg-surface-container-low text-on-surface placeholder:text-outline border-none focus:ring-0 py-5 pl-12 pr-6 rounded-lg font-body text-base outline-1 outline-outline-variant/20 transition-all duration-300" placeholder="Search by name, category, or capability..." type="text"/>
+</div>
+</header>
+<!-- Main Content Area: Sidebar + Grid -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-8 pb-32 flex flex-col lg:flex-row gap-16 relative">
+<!-- Navigation / Filters Sidebar -->
+<aside class="w-full lg:w-64 flex-shrink-0 lg:sticky lg:top-32 h-fit">
+<div class="flex flex-col gap-2">
+<h3 class="text-xs tracking-widest uppercase font-semibold text-tertiary font-label mb-4 pl-4">Categories</h3>
+<button class="flex items-center gap-3 w-full text-left px-4 py-3 bg-surface-container-lowest text-primary rounded-lg font-medium transition-colors shadow-ambient">
+<span class="material-symbols-outlined text-[20px]">apps</span>
+                    All Tools
+                </button>
+<button class="flex items-center gap-3 w-full text-left px-4 py-3 text-on-surface-variant hover:bg-surface-container-low hover:text-primary rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit_document</span>
+                    Writing &amp; Editorial
+                </button>
+<button class="flex items-center gap-3 w-full text-left px-4 py-3 text-on-surface-variant hover:bg-surface-container-low hover:text-primary rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">code</span>
+                    Coding &amp; Dev
+                </button>
+<button class="flex items-center gap-3 w-full text-left px-4 py-3 text-on-surface-variant hover:bg-surface-container-low hover:text-primary rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">image</span>
+                    Image Generation
+                </button>
+<button class="flex items-center gap-3 w-full text-left px-4 py-3 text-on-surface-variant hover:bg-surface-container-low hover:text-primary rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">movie</span>
+                    Video Synthesis
+                </button>
+<button class="flex items-center gap-3 w-full text-left px-4 py-3 text-on-surface-variant hover:bg-surface-container-low hover:text-primary rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">search_insights</span>
+                    Research &amp; Search
+                </button>
+<button class="flex items-center gap-3 w-full text-left px-4 py-3 text-on-surface-variant hover:bg-surface-container-low hover:text-primary rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">graphic_eq</span>
+                    Audio Processing
+                </button>
+</div>
+</aside>
+<!-- Tool Cards Grid -->
+<div class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-8 flex flex-col gap-6 shadow-ambient transition-transform hover:-translate-y-1 duration-300">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl" data-weight="fill">edit_square</span>
+</div>
+<div>
+<h2 class="text-2xl font-headline text-primary leading-tight">Claude 3.5 Sonnet</h2>
+<p class="text-sm text-tertiary font-label mt-1">Anthropic</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_add</span>
+</button>
+</div>
+<p class="text-on-surface-variant font-body leading-relaxed flex-grow">
+                    A highly articulate language model exhibiting exceptional nuance in long-form writing, logical reasoning, and maintaining complex stylistic constraints over extended contexts.
+                </p>
+<div class="bg-surface-container-low p-5 rounded-lg border-l-2 border-tertiary-fixed-dim">
+<h4 class="text-xs uppercase tracking-widest text-tertiary font-semibold mb-2">Recommended For</h4>
+<p class="text-sm text-on-surface font-medium leading-snug">Deep-dive technical writing, editorial drafting, and sophisticated code refactoring tasks requiring high context windows.</p>
+</div>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-label uppercase tracking-wider rounded-full">Writing</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-label uppercase tracking-wider rounded-full">Coding</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-label uppercase tracking-wider rounded-full">LLM</span>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-8 flex flex-col gap-6 shadow-ambient transition-transform hover:-translate-y-1 duration-300">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl" data-weight="fill">palette</span>
+</div>
+<div>
+<h2 class="text-2xl font-headline text-primary leading-tight">Midjourney v6</h2>
+<p class="text-sm text-tertiary font-label mt-1">Midjourney Inc.</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_add</span>
+</button>
+</div>
+<p class="text-on-surface-variant font-body leading-relaxed flex-grow">
+                    The premier diffusion model for generating highly photorealistic, stylistically complex imagery with profound semantic understanding of intricate prompts and artistic direction.
+                </p>
+<div class="bg-surface-container-low p-5 rounded-lg border-l-2 border-tertiary-fixed-dim">
+<h4 class="text-xs uppercase tracking-widest text-tertiary font-semibold mb-2">Recommended For</h4>
+<p class="text-sm text-on-surface font-medium leading-snug">Editorial illustration, conceptual art development, and high-fidelity mockups for design presentations.</p>
+</div>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-label uppercase tracking-wider rounded-full">Image</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-label uppercase tracking-wider rounded-full">Creative</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-label uppercase tracking-wider rounded-full">Diffusion</span>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl p-8 flex flex-col gap-6 shadow-ambient transition-transform hover:-translate-y-1 duration-300">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl" data-weight="fill">travel_explore</span>
+</div>
+<div>
+<h2 class="text-2xl font-headline text-primary leading-tight">Perplexity Pro</h2>
+<p class="text-sm text-tertiary font-label mt-1">Perplexity AI</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_add</span>
+</button>
+</div>
+<p class="text-on-surface-variant font-body leading-relaxed flex-grow">
+                    An advanced answer engine that synthesizes information from real-time web sources, providing meticulously cited responses rather than raw, unverified generated text.
+                </p>
+<div class="bg-surface-container-low p-5 rounded-lg border-l-2 border-tertiary-fixed-dim">
+<h4 class="text-xs uppercase tracking-widest text-tertiary font-semibold mb-2">Recommended For</h4>
+<p class="text-sm text-on-surface font-medium leading-snug">Academic research, market analysis, and any exploratory workflow requiring verifiable citations and current data.</p>
+</div>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-label uppercase tracking-wider rounded-full">Search</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-label uppercase tracking-wider rounded-full">Research</span>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="bg-surface-container-lowest rounded-xl p-8 flex flex-col gap-6 shadow-ambient transition-transform hover:-translate-y-1 duration-300">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl" data-weight="fill">terminal</span>
+</div>
+<div>
+<h2 class="text-2xl font-headline text-primary leading-tight">Cursor</h2>
+<p class="text-sm text-tertiary font-label mt-1">Anysphere</p>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_add</span>
+</button>
+</div>
+<p class="text-on-surface-variant font-body leading-relaxed flex-grow">
+                    An AI-first code editor built as a fork of VS Code, integrating predictive editing and repository-wide context awareness to drastically accelerate software development.
+                </p>
+<div class="bg-surface-container-low p-5 rounded-lg border-l-2 border-tertiary-fixed-dim">
+<h4 class="text-xs uppercase tracking-widest text-tertiary font-semibold mb-2">Recommended For</h4>
+<p class="text-sm text-on-surface font-medium leading-snug">Developers seeking deeply integrated AI assistance capable of understanding large, multi-file codebases.</p>
+</div>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-label uppercase tracking-wider rounded-full">Coding</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-label uppercase tracking-wider rounded-full">Editor</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-label uppercase tracking-wider rounded-full">Productivity</span>
+</div>
+</article>
+</div>
+</main>
+<!-- Footer Shared Component -->
+<footer class="w-full py-16 px-8 mt-auto bg-surface-container-low tonal-shift-from-surface-to-container-low transition-colors">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+<div class="flex flex-col gap-4 max-w-sm">
+<span class="text-xl font-headline text-primary dark:text-slate-100">The Modern Curator</span>
+<p class="text-on-surface-variant font-body text-sm">
+                    © 2024 The Modern Curator. All rights reserved.
+                </p>
+</div>
+<div class="flex flex-col gap-6">
+<h4 class="text-xs tracking-widest uppercase font-semibold text-tertiary font-label">Connect</h4>
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant hover:text-primary font-body text-sm hover:translate-x-1 transition-transform duration-200 focus:ring-1 focus:ring-amber-500 rounded-sm" href="#">Contact</a>
+<a class="text-on-surface-variant hover:text-primary font-body text-sm hover:translate-x-1 transition-transform duration-200 focus:ring-1 focus:ring-amber-500 rounded-sm" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-primary font-body text-sm hover:translate-x-1 transition-transform duration-200 focus:ring-1 focus:ring-amber-500 rounded-sm" href="#">GitHub</a>
+<a class="text-on-surface-variant hover:text-primary font-body text-sm hover:translate-x-1 transition-transform duration-200 focus:ring-1 focus:ring-amber-500 rounded-sm" href="#">Newsletter</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

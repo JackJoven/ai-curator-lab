@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Modern Curator | Bridging Creativity and AI</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#eae7e7",
+                        "on-primary-container": "#96a9be",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#261900",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c4c6cd",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-container-low": "#f6f3f2",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#e2dfde",
+                        "tertiary-fixed": "#ffdea5",
+                        "on-secondary-fixed-variant": "#474746",
+                        "primary-container": "#2c3e50",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "on-surface-variant": "#43474c",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-tint": "#4e6073",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface-container": "#f0eded",
+                        "secondary": "#5f5e5e",
+                        "on-secondary-container": "#636262",
+                        "on-tertiary-fixed-variant": "#5d4201",
+                        "on-primary-fixed-variant": "#36485b",
+                        "surface": "#fcf9f8",
+                        "surface-bright": "#fcf9f8",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "surface-variant": "#e5e2e1",
+                        "tertiary-container": "#503800",
+                        "tertiary": "#342400",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#dcd9d9",
+                        "background": "#fcf9f8",
+                        "primary": "#162839",
+                        "on-primary-fixed": "#091d2e",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#e9c176",
+                        "on-background": "#1c1b1b",
+                        "on-surface": "#1c1b1b",
+                        "outline": "#74777d",
+                        "primary-fixed-dim": "#b5c8df",
+                        "inverse-surface": "#313030",
+                        "inverse-primary": "#b5c8df",
+                        "primary-fixed": "#d1e4fb",
+                        "on-tertiary-container": "#c7a15a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem",
+                        "md": "0.375rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Noto Serif"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-gradient-primary {
+            background: linear-gradient(135deg, #162839 0%, #2c3e50 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #162839 0%, #2c3e50 100%);
+        }
+        .ambient-shadow {
+            box-shadow: 0 40px 60px -15px rgba(28, 27, 27, 0.05);
+        }
+        .ghost-border {
+            border: 1px solid rgba(196, 198, 205, 0.2);
+        }
+        .ghost-border:hover {
+            border-color: rgba(196, 198, 205, 1);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">
+<!-- TopNavBar Shared Component -->
+<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-sm dark:shadow-none bg-slate-100 dark:bg-slate-900 transition-colors">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-serif italic text-slate-900 dark:text-slate-100">
+                The Curator
+            </div>
+<ul class="hidden md:flex space-x-8 items-center">
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors font-body hover:opacity-80 transition-opacity duration-300" href="#">AI Tools</a></li>
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors font-body hover:opacity-80 transition-opacity duration-300" href="#">Blog</a></li>
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors font-body hover:opacity-80 transition-opacity duration-300" href="#">Projects</a></li>
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors font-body hover:opacity-80 transition-opacity duration-300" href="#">Workflows</a></li>
+<li><a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors font-body hover:opacity-80 transition-opacity duration-300" href="#">About</a></li>
+</ul>
+<button class="hidden md:inline-flex px-6 py-2 bg-gradient-primary text-on-primary font-label rounded-md hover:opacity-90 transition-opacity">
+                Get in Touch
+            </button>
+</div>
+</nav>
+<main class="pt-32">
+<!-- Hero Section -->
+<section class="bg-surface pb-24 px-8 relative overflow-hidden">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center min-h-[716px]">
+<div class="lg:col-span-7 relative z-10">
+<p class="text-tertiary text-sm font-semibold tracking-widest uppercase mb-6 font-label">
+                        The Modern Curator
+                    </p>
+<h1 class="font-headline text-5xl md:text-7xl lg:text-8xl text-primary leading-[1.1] mb-8">
+                        Bridging the gap between human creativity and AI efficiency.
+                    </h1>
+<p class="font-body text-on-surface-variant text-lg md:text-xl max-w-2xl leading-relaxed mb-10">
+                        I explore, evaluate, and implement artificial intelligence tools to streamline complex editorial workflows and elevate digital product design. Welcome to my curated index of methodologies.
+                    </p>
+<div class="flex flex-wrap gap-6 items-center">
+<a class="bg-gradient-primary text-on-primary px-8 py-4 rounded-md font-label font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2" href="#">
+                            Explore the Index
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+<a class="text-tertiary font-label font-medium group relative inline-flex items-center gap-2" href="#">
+                            View Latest Publication
+                            <span class="absolute -bottom-1 left-0 w-full h-[1px] bg-tertiary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+</a>
+</div>
+</div>
+<!-- Asymmetric Image Composition -->
+<div class="lg:col-span-5 relative h-[500px] w-full hidden lg:block">
+<div class="absolute top-10 right-0 w-[80%] h-[110%] rounded-md overflow-hidden ambient-shadow z-10 transform translate-x-12">
+<img alt="Abstract fluid art in deep blues and slate grays resembling artificial intelligence thought patterns" class="w-full h-full object-cover" data-alt="Abstract fluid art with smooth gradients of deep navy blue, slate gray, and subtle warm highlights creating a sophisticated corporate aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqwTEaeNXxVK9WjUdpp5NSyJoOjG-cwBVui94Ox70i4nFUoasrm0X2ikIlmNX5SCyDOYJgp59jRC7GKYDdfokWUf1XcclUeRN0im70lfEbhfXwoylmW3BjjaDsRjm_fze0k9oTxqx7JWFsBYRyxwn2T8THy3To1d0kb34QhFrKuJAE8izIzP1lMHRnoorAUnEvN-vQN9MS_FC-1FcBwAyQJppOu9GauZOQk-FMekpVD192NC7t2jaoaJkLBbXacbWC6PYlyD7GGyTL"/>
+</div>
+<!-- Decorative subtle element behind -->
+<div class="absolute -bottom-10 left-10 w-64 h-64 bg-surface-container-high rounded-full blur-[80px] opacity-60 z-0"></div>
+</div>
+</div>
+</section>
+<!-- Core Areas Section (Tonal Shift) -->
+<section class="bg-surface-container-low py-32 px-8">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+<!-- Area Card 1 -->
+<div class="bg-surface-container-lowest p-10 rounded-md group hover:-translate-y-2 transition-transform duration-500 ease-out ambient-shadow">
+<div class="w-14 h-14 bg-surface-container-low rounded-full flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-primary text-2xl" data-weight="fill">hub</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4">AI Tools Directory</h3>
+<p class="font-body text-on-surface-variant leading-relaxed mb-8">
+                            A highly curated, tested, and categorized collection of artificial intelligence utilities designed for high-end professional workflows.
+                        </p>
+<a class="text-tertiary font-label font-medium inline-flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
+                            Browse Directory <span class="material-symbols-outlined text-sm">arrow_right_alt</span>
+</a>
+</div>
+<!-- Area Card 2 -->
+<div class="bg-surface-container-lowest p-10 rounded-md group hover:-translate-y-2 transition-transform duration-500 ease-out ambient-shadow lg:translate-y-8">
+<div class="w-14 h-14 bg-surface-container-low rounded-full flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-primary text-2xl" data-weight="fill">menu_book</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4">Editorial Blog</h3>
+<p class="font-body text-on-surface-variant leading-relaxed mb-8">
+                            In-depth essays, workflow breakdowns, and philosophical explorations on the intersection of human curation and algorithmic generation.
+                        </p>
+<a class="text-tertiary font-label font-medium inline-flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
+                            Read Journal <span class="material-symbols-outlined text-sm">arrow_right_alt</span>
+</a>
+</div>
+<!-- Area Card 3 -->
+<div class="bg-surface-container-lowest p-10 rounded-md group hover:-translate-y-2 transition-transform duration-500 ease-out ambient-shadow lg:translate-y-16">
+<div class="w-14 h-14 bg-surface-container-low rounded-full flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-primary text-2xl" data-weight="fill">view_quilt</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4">Case Studies</h3>
+<p class="font-body text-on-surface-variant leading-relaxed mb-8">
+                            Detailed teardowns of high-impact projects where AI was leveraged not as a crutch, but as an invisible accelerator.
+                        </p>
+<a class="text-tertiary font-label font-medium inline-flex items-center gap-2 group-hover:gap-3 transition-all" href="#">
+                            View Projects <span class="material-symbols-outlined text-sm">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured AI Tools Section -->
+<section class="bg-surface py-32 px-8">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+<div class="max-w-2xl">
+<p class="text-tertiary text-sm font-semibold tracking-widest uppercase mb-4 font-label">The Arsenal</p>
+<h2 class="font-headline text-4xl md:text-5xl text-primary">Featured Utilities</h2>
+</div>
+<a class="text-tertiary font-label font-medium group relative inline-flex items-center gap-2 pb-1" href="#">
+                        View Complete Directory
+                        <span class="absolute bottom-0 left-0 w-full h-[1px] bg-tertiary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+</a>
+</div>
+<!-- Bento-ish Asymmetric Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Large Feature Card -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-md p-10 ambient-shadow relative overflow-hidden group">
+<!-- Decorative background element -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-surface-container-low rounded-bl-full opacity-50 -z-10 transition-transform group-hover:scale-110 duration-700"></div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 bg-secondary-container text-on-surface text-xs font-label uppercase tracking-wider rounded-full">LLM Integration</span>
+<span class="px-3 py-1 bg-surface-container-high text-on-surface text-xs font-label uppercase tracking-wider rounded-full">Enterprise</span>
+</div>
+<h3 class="font-headline text-3xl text-primary mb-4">Claude Opus Canvas Workflow</h3>
+<p class="font-body text-on-surface-variant text-lg leading-relaxed max-w-xl mb-8">
+                            A bespoke configuration for long-form editorial synthesis, bypassing standard chat interfaces for a structural, document-centric approach to AI collaboration.
+                        </p>
+<a class="inline-flex px-6 py-3 ghost-border text-primary font-label rounded-md transition-colors bg-transparent" href="#">
+                            View Blueprint
+                        </a>
+</div>
+<!-- Stacked Cards Right -->
+<div class="md:col-span-4 flex flex-col gap-8">
+<div class="bg-surface-container-lowest rounded-md p-8 ambient-shadow flex-1">
+<div class="flex gap-2 mb-4">
+<span class="px-3 py-1 bg-secondary-container text-on-surface text-xs font-label uppercase tracking-wider rounded-full">Image Gen</span>
+</div>
+<h3 class="font-headline text-xl text-primary mb-3">Midjourney Architecture Prompts</h3>
+<p class="font-body text-on-surface-variant text-sm mb-6">Structured prompt syntax focusing on volumetric lighting and brutalist materials.</p>
+<a class="text-tertiary font-label text-sm font-medium hover:underline underline-offset-4 decoration-[1px] transition-all" href="#">Explore Parameters</a>
+</div>
+<div class="bg-surface-container-lowest rounded-md p-8 ambient-shadow flex-1">
+<div class="flex gap-2 mb-4">
+<span class="px-3 py-1 bg-secondary-container text-on-surface text-xs font-label uppercase tracking-wider rounded-full">Automation</span>
+</div>
+<h3 class="font-headline text-xl text-primary mb-3">Zapier Logic Routing</h3>
+<p class="font-body text-on-surface-variant text-sm mb-6">Advanced branching pathways for curating user-submitted content via API.</p>
+<a class="text-tertiary font-label text-sm font-medium hover:underline underline-offset-4 decoration-[1px] transition-all" href="#">View Schema</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Blog Posts (Tonal Shift) -->
+<section class="bg-surface-container-low py-32 px-8">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-20">
+<p class="text-tertiary text-sm font-semibold tracking-widest uppercase mb-4 font-label">The Journal</p>
+<h2 class="font-headline text-4xl md:text-5xl text-primary">Recent Essays</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Article Card 1 -->
+<article class="group cursor-pointer">
+<div class="w-full aspect-[4/3] rounded-md overflow-hidden mb-6 bg-surface-container-high relative">
+<div class="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+<img alt="Minimalist workspace with vintage typewriter" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-in-out" data-alt="Clean minimalist desk surface from above featuring a vintage typewriter, blank natural paper, and soft natural daylight coming from a side window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkFhd0J19ZFKYBU8a_yix3DIee_mBtE7zdnrk0O1V8XRuqHMI3rvV5rEIWDtkle7TOOXLm4cSE10L4R44BltC9D-Hz0gtyE5Y0KxqzpPYEyOgqEgFqqeIfbG2ppDxoG03Th-ydVk5lo3Y-9yVp9OAs02kLPeCmCrwlXIMOASqkkNZ7bpfIdGYpQsNJvKK9kBue4NogyeZncJqOv8auEZNjonSZjCBkkZ4ALDOSMCpVIxnPegNrO-mwJ7X0pq5avqv4zgbC5ZYs4-PV"/>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<span class="text-tertiary font-label text-xs uppercase tracking-widest">Philosophy</span>
+<span class="w-1 h-1 bg-surface-tint rounded-full"></span>
+<span class="text-surface-tint font-label text-xs">Oct 12, 2024</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4 group-hover:text-tertiary transition-colors">The Illusion of Zero-Draft Generation</h3>
+<p class="font-body text-on-surface-variant mb-6 line-clamp-3">
+                            Why expecting perfect outputs on the first prompt fundamentally misunderstands the role of the human operator in the algorithmic loop.
+                        </p>
+<span class="text-tertiary font-label font-medium inline-flex items-center gap-2 group-hover:gap-3 transition-all border-b border-tertiary/30 pb-1">
+                            Read Essay
+                        </span>
+</article>
+<!-- Article Card 2 -->
+<article class="group cursor-pointer md:mt-12">
+<div class="w-full aspect-[4/3] rounded-md overflow-hidden mb-6 bg-surface-container-high relative">
+<div class="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+<img alt="Server room with glowing blue lights" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-in-out" data-row="Abstract representation of data flow with blurred light trails in sophisticated slate gray and muted gold tones against a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmmDBFpH8vLm8ZaA7g05_QaG-2uKRe93lLTZ0Flf0GuLJvRjZFhdCxZBQh4nV1KLyyGA_fQyI3eQlyVLmclO4JGN2hIxhQqm8A46nFTNf1UN42ZPXXpCw_9XYYxm2INq9oXBZVCLxQpK7M0gepDyKe9H4E8w22nK0BDD9H5BFdtc54X0r9YsbqYcHsiw4-5M8bQMq5VHN5xlLiqjUCiPStfzIAGIp7i4IxoOpEIh4UPS2M3mx1pukku2lit4rHWdC17j48YbErRsN3"/>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<span class="text-tertiary font-label text-xs uppercase tracking-widest">Technical</span>
+<span class="w-1 h-1 bg-surface-tint rounded-full"></span>
+<span class="text-surface-tint font-label text-xs">Sep 28, 2024</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4 group-hover:text-tertiary transition-colors">Context Windows and the Architecture of Memory</h3>
+<p class="font-body text-on-surface-variant mb-6 line-clamp-3">
+                            Structuring prompt metadata to maximize recall in long-context models without degrading output quality or tone.
+                        </p>
+<span class="text-tertiary font-label font-medium inline-flex items-center gap-2 group-hover:gap-3 transition-all border-b border-tertiary/30 pb-1">
+                            Read Essay
+                        </span>
+</article>
+<!-- Article Card 3 -->
+<article class="group cursor-pointer">
+<div class="w-full aspect-[4/3] rounded-md overflow-hidden mb-6 bg-surface-container-high relative">
+<div class="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+<img alt="Abstract geometric shapes" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-in-out" data-alt="Clean 3D rendering of elegant geometric shapes resembling a modern museum interior in soft matte white and off-white tones with natural shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY1A-XcAfsims1Kg5frrwOBAXCb4FFU-6PWatVrGYRjo8zZLRoct0gTskHY8z3OFuc3vieEaXKsrQfIKjnGjJyMZwq_UddevoznlkcqN8MC9dy81ANevaQ8cSrbmbPDxL5X8-NMFQgKXrrKE1f5eR0o1ijJvMyC_XU24OYcNKIpfFHqqwvF9NVNZ2d3fNI0ZfqU5eDF3csA8L1hMnGxmnlzopmxhX-7wOWAr8l03hGz5Gk7XLzjsLAXDDLlsxRYL4B7uywtsin5K8y"/>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<span class="text-tertiary font-label text-xs uppercase tracking-widest">Curation</span>
+<span class="w-1 h-1 bg-surface-tint rounded-full"></span>
+<span class="text-surface-tint font-label text-xs">Sep 15, 2024</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-4 group-hover:text-tertiary transition-colors">Building the Aesthetic Taxonomy</h3>
+<p class="font-body text-on-surface-variant mb-6 line-clamp-3">
+                            How to translate subjective visual brand guidelines into strict, reproducible parameters for diffusion models.
+                        </p>
+<span class="text-tertiary font-label font-medium inline-flex items-center gap-2 group-hover:gap-3 transition-all border-b border-tertiary/30 pb-1">
+                            Read Essay
+                        </span>
+</article>
+</div>
+</div>
+</section>
+<!-- Featured Projects -->
+<section class="bg-surface py-32 px-8 overflow-hidden">
+<div class="max-w-7xl mx-auto">
+<div class="mb-24">
+<p class="text-tertiary text-sm font-semibold tracking-widest uppercase mb-4 font-label">Applied Knowledge</p>
+<h2 class="font-headline text-4xl md:text-5xl text-primary">Featured Exhibits</h2>
+</div>
+<!-- Showcase 1 -->
+<div class="relative mb-32 md:mb-48 group">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8 items-center">
+<div class="lg:col-span-8 relative z-0">
+<div class="aspect-[16/9] w-full rounded-md overflow-hidden ambient-shadow">
+<img alt="People working in a modern high-end office" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out" data-alt="Professional working environment featuring a minimalist desk set up with premium matte dark gray surfaces, subtle warm lighting, and blurred analytical charts in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmB_4kmQT-Bh494AGDmfBsNHbzCB2ht0EctpsJkYldVbByCLQVjOR5v6URaSuS1j_B07WsYvJtPHM-LYU3_4d3ByMjwcq3sl66mwP1Ofa8pPqSU7HJFRy9iIYnZwYhlvKxBwmueJIaR5vTeT3faJfpxRylJ6gPh9r1y1cseHibF_uEqlfBmCGsKTwaTZH_Fuuh7HKYhtdSIbQfXQ31INgkB4lS6ytyUtYtSHsb75NRgw3bvkEOYrYd3YQKcUbqCIuYswC42FfYY5AG"/>
+</div>
+</div>
+<!-- Overlapping Text Box -->
+<div class="lg:col-span-5 lg:-ml-32 mt-8 lg:mt-0 relative z-10">
+<div class="bg-surface-container-lowest p-10 md:p-14 rounded-md ambient-shadow border border-surface-container-highest/50 backdrop-blur-sm">
+<h3 class="font-headline text-3xl text-primary mb-4">Aura: Generative Brand Identity</h3>
+<p class="font-body text-on-surface-variant text-lg leading-relaxed mb-8">
+                                    Developed an automated, multi-model pipeline that translates core brand adjectives into complete, cohesive visual identity packages for boutique agencies.
+                                </p>
+<div class="flex flex-wrap gap-4 border-t border-surface-container pt-6 mb-8">
+<div class="flex flex-col">
+<span class="text-xs uppercase tracking-wider font-label text-surface-tint mb-1">Role</span>
+<span class="font-body text-on-surface text-sm">Systems Architect</span>
+</div>
+<div class="flex flex-col ml-8">
+<span class="text-xs uppercase tracking-wider font-label text-surface-tint mb-1">Stack</span>
+<span class="font-body text-on-surface text-sm">Python, Stable Diffusion, API</span>
+</div>
+</div>
+<a class="inline-flex px-6 py-3 ghost-border text-primary font-label rounded-md transition-colors bg-transparent" href="#">
+                                    View Case Study
+                                </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Showcase 2 (Reverse Layout) -->
+<div class="relative group">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8 items-center">
+<!-- Text Box First on Mobile, overlapping on Desktop -->
+<div class="lg:col-span-5 order-2 lg:order-1 mt-8 lg:mt-0 relative z-10 lg:mr-[-8rem]">
+<div class="bg-surface-container-lowest p-10 md:p-14 rounded-md ambient-shadow border border-surface-container-highest/50 backdrop-blur-sm">
+<h3 class="font-headline text-3xl text-primary mb-4">The Lexicon Engine</h3>
+<p class="font-body text-on-surface-variant text-lg leading-relaxed mb-8">
+                                    A semantic search and synthesis tool built over a bespoke knowledge graph of high-end editorial standards, enabling real-time tone correction for technical writers.
+                                </p>
+<div class="flex flex-wrap gap-4 border-t border-surface-container pt-6 mb-8">
+<div class="flex flex-col">
+<span class="text-xs uppercase tracking-wider font-label text-surface-tint mb-1">Role</span>
+<span class="font-body text-on-surface text-sm">Prompt Engineer</span>
+</div>
+<div class="flex flex-col ml-8">
+<span class="text-xs uppercase tracking-wider font-label text-surface-tint mb-1">Stack</span>
+<span class="font-body text-on-surface text-sm">OpenAI, LangChain, React</span>
+</div>
+</div>
+<a class="inline-flex px-6 py-3 ghost-border text-primary font-label rounded-md transition-colors bg-transparent" href="#">
+                                    View Case Study
+                                </a>
+</div>
+</div>
+<div class="lg:col-span-8 order-1 lg:order-2 relative z-0">
+<div class="aspect-[16/9] w-full rounded-md overflow-hidden ambient-shadow">
+<img alt="Code on a screen with elegant typography" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out" data-alt="Close up view of elegant typography on a high resolution matte display showing structured data syntax in muted slate and amber colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZgvRvNbuUAZhPBlpt8i5FTEIluuFvaygDwQrA8Swyt9Xof8XISLYD5M8wiRsa7EFF4bBdRM8kGgkMfHP7mFJB0DujQr9AHMX2a7g3fgxY_yRFgY0DT398CErQclcB7T7YKbkHgi9VVpIKgVUyPxC0HGytdraVN2nzNxSKtxePh5DypdEZMYg4wdL1eRvOR9-7xBtCLHodFIgLs3AQ9HykZ76DJchToZo7bBx_cUzmmJa-WDDtP3lk96HEM45buLAZc9sbPydKJUMj"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shared Component -->
+<footer class="bg-slate-100 dark:bg-slate-900 w-full py-16 px-8 mt-24">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+<div class="flex flex-col gap-6">
+<div class="text-xl font-serif text-slate-900 dark:text-slate-100">
+                    The Curator
+                </div>
+<p class="font-serif text-lg italic text-slate-800 dark:text-slate-200 max-w-sm">
+                    © 2024 The Modern Curator. All rights reserved.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label text-sm uppercase tracking-widest text-slate-500 mb-2">Connect</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-label hover:translate-x-1 transition-transform duration-200 inline-block focus:ring-1 focus:ring-amber-500 outline-none rounded-sm" href="#">Contact</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-label hover:translate-x-1 transition-transform duration-200 inline-block focus:ring-1 focus:ring-amber-500 outline-none rounded-sm" href="#">LinkedIn</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-label hover:translate-x-1 transition-transform duration-200 inline-block focus:ring-1 focus:ring-amber-500 outline-none rounded-sm" href="#">GitHub</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 font-label hover:translate-x-1 transition-transform duration-200 inline-block focus:ring-1 focus:ring-amber-500 outline-none rounded-sm" href="#">Newsletter</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>项目作品集 | AI Curator Lab</title>
+    <meta name="description" content="展示个人项目、技术栈、实现难点、解决方案和复盘。">
+    <link rel="stylesheet" href="../assets/styles.css">
+    <script defer src="../assets/site.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <header class="site-header">
+      <nav class="nav-wrap" aria-label="主导航">
+        <a class="brand" href="../index.html">AI Curator Lab</a>
+        <ul class="nav-list">
+          <li><a href="../index.html">首页</a></li>
+          <li><a href="../ai-tools/index.html">AI 工具</a></li>
+          <li><a href="../blog/index.html">博客</a></li>
+          <li><a aria-current="page" href="../projects/index.html">项目</a></li>
+          <li><a href="../workflows/index.html">工作流</a></li>
+          <li><a href="../about/index.html">关于</a></li>
+        </ul>
+        <a class="header-action" href="../about/index.html#contact">联系我</a>
+        <button class="menu-toggle" type="button" aria-label="打开导航" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button>
+      </nav>
+      <div class="mobile-menu" hidden data-mobile-menu>
+        <a href="../index.html">首页</a>
+        <a href="../ai-tools/index.html">AI 工具</a>
+        <a href="../blog/index.html">博客</a>
+        <a href="../projects/index.html">项目</a>
+        <a href="../workflows/index.html">工作流</a>
+        <a href="../about/index.html">关于</a>
+      </div>
+    </header>
+
+    <main id="main" class="page-shell">
+      <header class="page-hero">
+        <div>
+          <p class="kicker">Selected Works</p>
+          <h1>项目作品集</h1>
+          <p>每个项目都尽量展示背景、目标、技术栈、难点和复盘，而不是只放一个链接。</p>
+        </div>
+      </header>
+
+      <section class="page-content project-list">
+        <article class="project-feature">
+          <figure class="image-panel project-image">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3lIGvs56jeGZIl_bhVceFt7omcYMyKe7HGwhqjLHryzqZHpHrGV4z3U-EwY-Za94tXG5t8n8NS3HcS9_IvPkQfgl4ev4XrpeFE9J35rN94bYQ-Se2l41Nb24mI6plkOAlz-zZLSZHms8U7m4OJqj_ir8v56IAhxLrTviogifE-fGzUhelvXnf3952LBvJQ9ELbNCIj3HntvprwcBtjAJhS8-7tVfmqx-fxGm7mg3XLB8mbYZNESL_r2CprtEUE5SSnvaVSApByWHM" alt="带有建筑感的抽象 3D 场景，象征产品结构" loading="lazy">
+          </figure>
+          <div class="project-copy">
+            <span class="status">已上线</span>
+            <h2 class="project-title">AI 工具导航站</h2>
+            <p class="project-meta">Astro · TypeScript · Tailwind · MDX · Pagefind</p>
+            <p>为个人长期维护的 AI 工具索引设计内容模型、分类规则、搜索筛选和详情页结构，让工具导航从链接列表变成有判断力的知识库。</p>
+            <details><summary>查看项目复盘</summary><ul><li>问题：普通导航站信息密度高，但缺少真实场景。</li><li>方案：每个工具必须包含推荐场景、限制和替代工具。</li><li>结果：访问者可以按任务而不是厂商选择工具。</li></ul></details>
+          </div>
+        </article>
+
+        <article class="project-feature">
+          <figure class="image-panel project-image">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7Gj_8Jid0xZlTquvnU_lRHiWNmSMjgY2IpRTcpvcMECbmLt_JMeEY6S4RONVhMf1ygyn-3yhak3_uhS7hxntU_4ZXNlEN7P6RcDsJNRvxtipfcmqAW8eVE8BG41b_AmUoat5ZYGEzsqcQKYuZIh0s0wYdI-cdPow3DCecXlZH6aXYYUGm_nziWraQ43nFTfuOEmWWWDpyP36TuvnramB8MnKy97BRNBpxM0jGbhT2uVo2gXXIt-x6IRYbXvUSZKkzO7McxE78PUES" alt="极简排版海报，象征内容产品" loading="lazy">
+          </figure>
+          <div class="project-copy">
+            <span class="status building">开发中</span>
+            <h2 class="project-title">个人知识库自动化</h2>
+            <p class="project-meta">n8n · Notion · Readwise · OpenAI API</p>
+            <p>把阅读、摘录、AI 总结、标签归档和写作选题连接起来，减少资料散落和重复整理。</p>
+            <details><summary>查看项目复盘</summary><ul><li>问题：收藏很多，真正能复用的内容很少。</li><li>方案：所有输入都要经过摘要、标签、行动项三个步骤。</li><li>结果：博客选题和项目资料可以从同一套内容库里复用。</li></ul></details>
+          </div>
+        </article>
+
+        <article class="project-feature">
+          <figure class="image-panel project-image">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW7WlpnCQjhCWuyDgzp6aFhzBIKT4Y0oh_pZ1NVN4xbY_qumshWtJew3vkbJJ4_Ti1ULB44u-vtb_47VNEcPWj3BkglVvWStLbeXnhGc0pUjxC-Jv1MKti_2ElVmcoKzyxjfsM79u_M7D3WCRPU7kZKMMBqJGcINyOtadDJqQ5mqpqIqMwIWDquT3ZJXf-7sn6P4AjexVyIPLnwa8vicyJvOoTWEPPtez-i_PRmc57CqYoQJr41KEJ58YkIMDuUARRGEdwbDoMrcrK" alt="深色界面局部，象征 AI 产品原型" loading="lazy">
+          </figure>
+          <div class="project-copy">
+            <span class="status building">原型</span>
+            <h2 class="project-title">AI 工作流生成器</h2>
+            <p class="project-meta">React · TypeScript · Local Storage · Prompt 模板</p>
+            <p>根据用户输入的目标、材料和输出格式，生成可复制的 AI 工作流步骤和 Prompt 草稿。</p>
+            <details><summary>查看项目复盘</summary><ul><li>问题：很多人知道工具，但不知道如何串起来。</li><li>方案：把工作流拆成输入、处理、验证、输出四段。</li><li>结果：可把经验转化成可分享的模板。</li></ul></details>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer"><div class="footer-inner"><div><strong>AI Curator Lab</strong><br>项目不仅展示结果，也展示判断过程。</div><div><a href="../about/index.html#contact">联系</a></div></div></footer>
+  </body>
+</html>

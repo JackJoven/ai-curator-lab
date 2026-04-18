@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI 工具导航 | AI Curator Lab</title>
+    <meta name="description" content="按 AI 导航、对话助手、搜索研究、编程开发、图像设计、视频生成、音频音乐、写作内容、办公效率、自动化 Agent、知识学习、数据分析、营销增长、网站应用搭建分类整理 AI 工具。">
+    <link rel="stylesheet" href="../assets/styles.css">
+    <script defer src="../assets/ai-tools-data.js"></script>
+    <script defer src="../assets/ai-tools-page.js"></script>
+    <script defer src="../assets/site.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <header class="site-header">
+      <nav class="nav-wrap" aria-label="主导航">
+        <a class="brand" href="../index.html">AI Curator Lab</a>
+        <ul class="nav-list">
+          <li><a href="../index.html">首页</a></li>
+          <li><a aria-current="page" href="../ai-tools/index.html">AI 工具</a></li>
+          <li><a href="../blog/index.html">博客</a></li>
+          <li><a href="../projects/index.html">项目</a></li>
+          <li><a href="../workflows/index.html">工作流</a></li>
+          <li><a href="../about/index.html">关于</a></li>
+        </ul>
+        <a class="header-action" href="../about/index.html#contact">联系我</a>
+        <button class="menu-toggle" type="button" aria-label="打开导航" aria-expanded="false" data-menu-toggle><span></span><span></span><span></span></button>
+      </nav>
+      <div class="mobile-menu" hidden data-mobile-menu>
+        <a href="../index.html">首页</a>
+        <a href="../ai-tools/index.html">AI 工具</a>
+        <a href="../blog/index.html">博客</a>
+        <a href="../projects/index.html">项目</a>
+        <a href="../workflows/index.html">工作流</a>
+        <a href="../about/index.html">关于</a>
+      </div>
+    </header>
+
+    <main id="main" class="page-shell">
+      <header class="page-hero">
+        <div>
+          <p class="kicker">Directory</p>
+          <h1>AI 工具导航</h1>
+          <p>这一版先把市面上常见的 AI 导航站和主流 AI 工具集中收录起来，按用途分类，方便继续扩展成真正的个人 AI 资源库。</p>
+        </div>
+        <label class="search-panel">
+          <span class="sr-only">搜索工具</span>
+          <input id="toolSearch" type="search" placeholder="搜索名称、标签、地区或用途">
+        </label>
+      </header>
+
+      <section class="page-content">
+        <div class="stat-strip" aria-label="工具库统计">
+          <span id="toolCount">正在载入工具...</span>
+          <span id="categoryCount">正在载入分类...</span>
+          <span>最后整理：2026-04-18</span>
+        </div>
+
+        <div class="source-note">
+          <strong>整理口径：</strong>优先收录主流 AI 导航站、综合助手、搜索研究、编程、图像、视频、音频、写作、办公、自动化、知识管理、数据分析、营销和建站工具。工具信息会随产品变化继续校正。
+        </div>
+      </section>
+
+      <div class="page-content directory-layout">
+        <aside class="sidebar" aria-label="工具分类">
+          <h2 class="sidebar-title">分类</h2>
+          <div class="filters" id="categoryFilters"></div>
+        </aside>
+
+        <section aria-label="AI 工具列表">
+          <div class="tool-grid" id="toolGrid"></div>
+          <p class="empty-state" id="toolEmpty">没有匹配的工具，换个关键词或分类试试。</p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div><strong>AI Curator Lab</strong><br>持续更新工具、分类和真实使用评价。</div>
+        <div><a href="../about/index.html#contact">联系</a></div>
+      </div>
+    </footer>
+  </body>
+</html>
