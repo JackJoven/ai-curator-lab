@@ -79,12 +79,9 @@ function initMatrixWave(canvasElement) {
   const draw = () => {
     const isSmall = width < 760;
     const columns = clamp(Math.round(width / (isSmall ? 24 : 32)) + 18, isSmall ? 26 : 34, isSmall ? 34 : 50);
-    const mainRows = isSmall ? 16 : 22;
-    const fadeRows = isSmall ? 4 : 6;
-    const rows = mainRows + fadeRows;
+    const rows = isSmall ? 18 : 26;
     const horizon = height * (isSmall ? 0.28 : 0.24);
-    const floorHeight = height * 0.9;
-    const fadeHeight = height * (isSmall ? 0.17 : 0.2);
+    const floorHeight = height * 0.92;
     const waveStrength = isSmall ? 34 : 54;
     const points = [];
 
@@ -92,16 +89,21 @@ function initMatrixWave(canvasElement) {
     context.fillStyle = "#142638";
     context.fillRect(0, 0, width, height);
 
+    const horizonGlow = context.createLinearGradient(0, horizon - 34, 0, horizon + 42);
+    horizonGlow.addColorStop(0, "rgba(181, 218, 229, 0)");
+    horizonGlow.addColorStop(0.5, "rgba(181, 218, 229, 0.16)");
+    horizonGlow.addColorStop(1, "rgba(233, 193, 118, 0)");
+    context.fillStyle = horizonGlow;
+    context.fillRect(0, horizon - 34, width, 76);
+
     for (let row = 0; row < rows; row += 1) {
       const rowPoints = [];
-      const waveRow = row - fadeRows;
-      const isFadeRow = waveRow < 0;
-      const depth = clamp(waveRow / (mainRows - 1), 0, 1);
-      const fadeProgress = isFadeRow ? (row + 1) / (fadeRows + 1) : 1;
-      const fade = isFadeRow ? Math.pow(fadeProgress, 1.45) * 0.78 : 1;
-      const screenY = isFadeRow ? horizon - (1 - fadeProgress) * fadeHeight : horizon + depth * floorHeight;
-      const span = width * 1.2;
-      const rowDrift = Math.sin(depth * Math.PI * 1.6 + time * 0.58) * 12;
+      const depth = row / (rows - 1);
+      const fade = clamp(Math.pow(depth, 0.82), 0.035, 1);
+      const screenY = horizon + Math.pow(depth, 1.82) * floorHeight;
+      const span = width * (0.18 + depth * 1.16);
+      const motionScale = 0.32 + depth * 0.68;
+      const rowDrift = Math.sin(depth * Math.PI * 1.6 + time * 0.58) * (3 + depth * 11);
 
       for (let column = 0; column < columns; column += 1) {
         const progress = column / (columns - 1);
@@ -114,18 +116,18 @@ function initMatrixWave(canvasElement) {
         const pointerInfluence = pointer.active ? Math.exp(-pointerDistance * pointerDistance) : 0;
         const velocityBoost = pointer.velocity * pointerInfluence * 0.16;
         const localTime = time + velocityBoost * 1.1;
-        const distance = Math.hypot(normalX * 2.4, waveRow - mainRows * 0.45);
+        const distance = Math.hypot(normalX * 2.4, row - rows * 0.45);
         const transverse = Math.sin(normalX * 5.4 + localTime * 1.62);
-        const longitudinal = Math.sin(waveRow * 0.82 + normalX * 1.7 - localTime * 1.18);
-        const cross = Math.cos(waveRow * 0.62 - localTime * 1.05 + normalX * 1.1);
+        const longitudinal = Math.sin(row * 0.82 + normalX * 1.7 - localTime * 1.18);
+        const cross = Math.cos(row * 0.62 - localTime * 1.05 + normalX * 1.1);
         const pulse = Math.sin(distance * 1.18 - localTime * 1.45);
         const wake = Math.sin(pointerDistance * 7.2 - localTime * 4.4) * velocityBoost * waveStrength * 0.32;
         const lift = (transverse * 0.68 + cross * 0.42 + pulse * 0.28) * waveStrength + wake;
-        const longitudinalShift = longitudinal * 13 + Math.sin(normalX * 3.2 - localTime * 0.86) * 5;
-        const longitudinalLift = Math.cos(waveRow * 0.7 + normalX * 1.9 - localTime * 1.14) * 11;
+        const longitudinalShift = (longitudinal * 13 + Math.sin(normalX * 3.2 - localTime * 0.86) * 5) * motionScale;
+        const longitudinalLift = Math.cos(row * 0.7 + normalX * 1.9 - localTime * 1.14) * 11 * motionScale;
         const crestEnergy = clamp((lift / (waveStrength * 1.38) + 1) * 0.5, 0, 1);
         const screenX = baseX + longitudinalShift + pointer.x * 4 * pointer.velocity;
-        const projectedY = screenY - lift * 0.56 + longitudinalLift - pointer.y * 4 * pointer.velocity;
+        const projectedY = screenY - lift * (0.22 + depth * 0.36) + longitudinalLift - pointer.y * 4 * pointer.velocity;
 
         rowPoints.push({
           x: screenX,
@@ -134,7 +136,7 @@ function initMatrixWave(canvasElement) {
           boost: velocityBoost,
           energy: crestEnergy,
           fade,
-          waveRow,
+          waveRow: row,
         });
       }
 
@@ -143,6 +145,13 @@ function initMatrixWave(canvasElement) {
 
     context.save();
     context.globalCompositeOperation = "lighter";
+
+    context.beginPath();
+    context.moveTo(0, horizon);
+    context.lineTo(width, horizon);
+    context.lineWidth = 1;
+    context.strokeStyle = "rgba(181, 218, 229, 0.18)";
+    context.stroke();
 
     for (let row = 0; row < rows; row += 1) {
       for (let column = 0; column < columns; column += 1) {
