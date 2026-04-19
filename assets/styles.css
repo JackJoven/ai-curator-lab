@@ -226,7 +226,12 @@ textarea {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: rgba(22, 40, 57, 0.12);
+  background: linear-gradient(
+    90deg,
+    rgba(22, 40, 57, 0.12) 0%,
+    rgba(22, 40, 57, 0.03) 58%,
+    rgba(22, 40, 57, 0.04) 100%
+  );
 }
 
 .hero-canvas {
