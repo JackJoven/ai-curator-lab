@@ -42,7 +42,7 @@ function initMatrixWave(canvasElement) {
     const accent = Math.sin(phase * 1.4 - time * 0.9);
     const hue = accent > 0.76 ? warmHue : accent < -0.82 ? coralHue : coolHue;
     const saturation = 78 + boost * 14 + energy * 16;
-    const lightness = 48 + boost * 8 + energy * 26;
+    const lightness = 54 + boost * 8 + energy * 28;
 
     return `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
   };
@@ -71,7 +71,7 @@ function initMatrixWave(canvasElement) {
     context.beginPath();
     context.moveTo(start.x, start.y);
     context.lineTo(end.x, end.y);
-    context.lineWidth = 0.95 + start.boost * 0.35 + start.energy * 0.32;
+    context.lineWidth = 1.05 + start.boost * 0.35 + start.energy * 0.36;
     context.strokeStyle = waveColor(phase, start.depth, alpha, start.boost, start.energy);
     context.stroke();
   };
@@ -91,7 +91,7 @@ function initMatrixWave(canvasElement) {
 
     const horizonGlow = context.createLinearGradient(0, horizon - 34, 0, horizon + 42);
     horizonGlow.addColorStop(0, "rgba(181, 218, 229, 0)");
-    horizonGlow.addColorStop(0.5, "rgba(181, 218, 229, 0.16)");
+    horizonGlow.addColorStop(0.5, "rgba(181, 218, 229, 0.08)");
     horizonGlow.addColorStop(1, "rgba(233, 193, 118, 0)");
     context.fillStyle = horizonGlow;
     context.fillRect(0, horizon - 34, width, 76);
@@ -146,17 +146,10 @@ function initMatrixWave(canvasElement) {
     context.save();
     context.globalCompositeOperation = "lighter";
 
-    context.beginPath();
-    context.moveTo(0, horizon);
-    context.lineTo(width, horizon);
-    context.lineWidth = 1;
-    context.strokeStyle = "rgba(181, 218, 229, 0.18)";
-    context.stroke();
-
     for (let row = 0; row < rows; row += 1) {
       for (let column = 0; column < columns; column += 1) {
         const point = points[row][column];
-        const alpha = 0.14 + point.energy * 0.2 + point.boost * 0.08;
+        const alpha = 0.19 + point.energy * 0.24 + point.boost * 0.1;
         const phase = column * 0.36 + point.waveRow * 0.72 + point.depth * 2.4;
 
         if (column < columns - 1) {
@@ -164,7 +157,7 @@ function initMatrixWave(canvasElement) {
         }
 
         if (row < rows - 1) {
-          drawLine(point, points[row + 1][column], alpha * 0.62 * Math.min(point.fade, points[row + 1][column].fade), phase + 1.1);
+          drawLine(point, points[row + 1][column], alpha * 0.7 * Math.min(point.fade, points[row + 1][column].fade), phase + 1.1);
         }
       }
     }
