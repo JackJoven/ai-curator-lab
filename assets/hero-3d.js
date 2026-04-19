@@ -30,14 +30,22 @@ function initMatrixWave(canvasElement) {
   let pixelRatio = 1;
   let time = 0;
   let frameId = 0;
+  let lastFrameTime = 0;
 
   const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+  const frameInterval = 1000 / 30;
+  const maxRenderPixels = 900000;
 
   const resize = () => {
     const rect = canvasElement.getBoundingClientRect();
-    pixelRatio = Math.min(window.devicePixelRatio || 1, 1.7);
     width = Math.max(1, rect.width);
     height = Math.max(1, rect.height);
+    pixelRatio = Math.min(window.devicePixelRatio || 1, 1);
+
+    if (width * height * pixelRatio * pixelRatio > maxRenderPixels) {
+      pixelRatio = Math.sqrt(maxRenderPixels / (width * height));
+    }
+
     canvasElement.width = Math.floor(width * pixelRatio);
     canvasElement.height = Math.floor(height * pixelRatio);
     context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
@@ -73,8 +81,8 @@ function initMatrixWave(canvasElement) {
     context.textBaseline = "middle";
 
     const topMargin = height * (isSmall ? 0.06 : 0.05);
-    const matrixRows = isSmall ? 9 : 12;
-    const matrixColumns = columns + (isSmall ? 4 : 8);
+    const matrixRows = isSmall ? 7 : 9;
+    const matrixColumns = columns + (isSmall ? 2 : 4);
     const rows = [];
 
     for (let row = 0; row < matrixRows; row += 1) {
@@ -101,8 +109,7 @@ function initMatrixWave(canvasElement) {
     context.fillStyle = horizonGlow;
     context.fillRect(0, horizon - 70, width, 96);
 
-    context.shadowBlur = 12;
-    context.shadowColor = "rgba(86, 172, 190, 0.22)";
+    context.shadowBlur = 0;
 
     for (let row = 0; row < rows.length; row += 1) {
       for (let column = 0; column < rows[row].length; column += 1) {
@@ -117,12 +124,12 @@ function initMatrixWave(canvasElement) {
           drawLine(point, rows[row + 1][column], alpha * 0.78, "cool");
         }
 
-        if ((row + column) % 4 === 0) {
+        if ((row + column) % 5 === 0) {
           context.fillStyle = `rgba(252, 249, 248, ${0.12 + point.depth * 0.16})`;
           context.fillRect(point.x - 0.8, point.y - 0.8, 1.6, 1.6);
         }
 
-        if ((row * 3 + column) % 11 === 0 && row > 1) {
+        if ((row * 3 + column) % 17 === 0 && row > 1) {
           const digit = (row + column + Math.floor(time * 2)) % 2 === 0 ? "1" : "0";
           context.fillStyle = `rgba(181, 218, 229, ${0.1 + point.depth * 0.18})`;
           context.fillText(digit, point.x + 4, point.y - 7);
@@ -132,10 +139,10 @@ function initMatrixWave(canvasElement) {
 
     context.shadowBlur = 0;
 
-    for (let column = 0; column < matrixColumns; column += 3) {
+    for (let column = 0; column < matrixColumns; column += 5) {
       const anchor = rows[0][column];
       const top = rows[rows.length - 1][column];
-      const streamLength = 3 + (column % 4);
+      const streamLength = 2 + (column % 2);
 
       for (let stream = 0; stream < streamLength; stream += 1) {
         const fall = (time * 0.28 + stream * 0.2 + column * 0.07) % 1;
@@ -194,8 +201,8 @@ function initMatrixWave(canvasElement) {
   const draw = () => {
     const isSmall = width < 760;
     const spacing = isSmall ? 36 : 44;
-    const columns = isSmall ? 20 : 32;
-    const rows = isSmall ? 18 : 26;
+    const columns = isSmall ? 18 : 28;
+    const rows = isSmall ? 15 : 20;
     const horizon = height * (isSmall ? 0.28 : 0.24);
     const centerX = width * (isSmall ? 0.5 : 0.64);
     const floorHeight = height * 0.92;
@@ -249,8 +256,7 @@ function initMatrixWave(canvasElement) {
     context.lineWidth = 1.15;
     context.font = "10px Inter, Arial, sans-serif";
     context.textBaseline = "middle";
-    context.shadowBlur = 12;
-    context.shadowColor = "rgba(181, 218, 229, 0.18)";
+    context.shadowBlur = 0;
 
     for (let row = 0; row < rows; row += 1) {
       for (let column = 0; column < columns; column += 1) {
@@ -268,8 +274,7 @@ function initMatrixWave(canvasElement) {
       }
     }
 
-    context.shadowBlur = 9;
-    context.shadowColor = "rgba(252, 249, 248, 0.2)";
+    context.shadowBlur = 0;
 
     for (let row = 0; row < rows; row += 1) {
       for (let column = 0; column < columns; column += 1) {
@@ -282,7 +287,7 @@ function initMatrixWave(canvasElement) {
         context.fillStyle = `rgba(252, 249, 248, ${glow})`;
         context.fill();
 
-        if ((row + column) % 11 === 0 && point.depth > 0.26) {
+        if ((row + column) % 17 === 0 && point.depth > 0.26) {
           context.fillStyle = `rgba(181, 218, 229, ${0.14 + point.depth * 0.26 + point.boost * 0.08})`;
           context.fillText("01", point.x + 5, point.y - 5);
         }
@@ -301,7 +306,15 @@ function initMatrixWave(canvasElement) {
     context.fillRect(0, 0, width * 0.72, height);
   };
 
-  const animate = () => {
+  const animate = (timestamp = 0) => {
+    if (timestamp - lastFrameTime < frameInterval) {
+      frameId = window.requestAnimationFrame(animate);
+      return;
+    }
+
+    const frameStep = lastFrameTime ? clamp((timestamp - lastFrameTime) / frameInterval, 0.6, 1.8) : 1;
+    lastFrameTime = timestamp;
+
     pointer.velocity += (pointer.targetVelocity - pointer.velocity) * 0.12;
     pointer.targetVelocity *= 0.82;
 
@@ -309,7 +322,7 @@ function initMatrixWave(canvasElement) {
       pointer.targetVelocity = 0;
     }
 
-    time += prefersReducedMotion.matches ? 0 : 0.018;
+    time += prefersReducedMotion.matches ? 0 : 0.018 * frameStep;
     draw();
     frameId = window.requestAnimationFrame(animate);
   };
@@ -340,6 +353,15 @@ function initMatrixWave(canvasElement) {
   window.addEventListener("resize", resize);
   window.addEventListener("pointermove", onPointerMove, { passive: true });
   window.addEventListener("pagehide", () => window.cancelAnimationFrame(frameId), { once: true });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      window.cancelAnimationFrame(frameId);
+      return;
+    }
+
+    lastFrameTime = 0;
+    frameId = window.requestAnimationFrame(animate);
+  });
   resize();
   animate();
 }
