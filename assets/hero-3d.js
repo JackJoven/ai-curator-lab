@@ -35,14 +35,14 @@ function initMatrixWave(canvasElement) {
   const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
   const maxRenderPixels = 900000;
 
-  const waveColor = (phase, depth, alpha, boost = 0) => {
+  const waveColor = (phase, depth, alpha, boost = 0, energy = 0) => {
     const coolHue = 172 + Math.sin(phase + time * 0.72) * 24;
     const warmHue = 42 + Math.sin(phase * 0.6 - time * 0.5) * 10;
     const coralHue = 13 + Math.sin(phase * 0.9 + time * 0.36) * 8;
     const accent = Math.sin(phase * 1.4 - time * 0.9);
     const hue = accent > 0.76 ? warmHue : accent < -0.82 ? coralHue : coolHue;
-    const saturation = 78 + depth * 12 + boost * 24;
-    const lightness = 56 + depth * 20 + boost * 12;
+    const saturation = 76 + depth * 10 + boost * 18 + energy * 14;
+    const lightness = 48 + depth * 18 + boost * 8 + energy * 24;
 
     return `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
   };
@@ -71,8 +71,8 @@ function initMatrixWave(canvasElement) {
     context.beginPath();
     context.moveTo(start.x, start.y);
     context.lineTo(end.x, end.y);
-    context.lineWidth = 0.75 + start.depth * 0.55 + start.boost * 0.8;
-    context.strokeStyle = waveColor(phase, start.depth, alpha, start.boost);
+    context.lineWidth = 0.7 + start.depth * 0.5 + start.boost * 0.45 + start.energy * 0.45;
+    context.strokeStyle = waveColor(phase, start.depth, alpha, start.boost, start.energy);
     context.stroke();
   };
 
@@ -108,12 +108,15 @@ function initMatrixWave(canvasElement) {
         const velocityBoost = pointer.velocity * pointerInfluence * 0.16;
         const localTime = time + velocityBoost * 1.1;
         const distance = Math.hypot(normalX * 2.4, row - rows * 0.45);
-        const waveA = Math.sin(normalX * 5.2 + localTime * 1.72);
-        const waveB = Math.cos(row * 0.68 - localTime * 1.18);
-        const pulse = Math.sin(distance * 1.28 - localTime * 1.7);
+        const transverse = Math.sin(normalX * 5.4 + localTime * 1.62);
+        const longitudinal = Math.sin(row * 0.82 + normalX * 1.7 - localTime * 1.18);
+        const cross = Math.cos(row * 0.62 - localTime * 1.05 + normalX * 1.1);
+        const pulse = Math.sin(distance * 1.18 - localTime * 1.45);
         const wake = Math.sin(pointerDistance * 7.2 - localTime * 4.4) * velocityBoost * waveStrength * 0.32;
-        const lift = (waveA * 0.72 + waveB * 0.46 + pulse * 0.34) * waveStrength + wake;
-        const screenX = baseX + pointer.x * 6 * depth * pointer.velocity;
+        const lift = (transverse * 0.68 + cross * 0.42 + pulse * 0.28) * waveStrength + wake;
+        const longitudinalShift = longitudinal * (4 + depth * 20) + Math.sin(normalX * 3.2 - localTime * 0.86) * depth * 7;
+        const crestEnergy = clamp((lift / (waveStrength * 1.38) + 1) * 0.5, 0, 1);
+        const screenX = baseX + longitudinalShift + pointer.x * 6 * depth * pointer.velocity;
         const projectedY = screenY - lift * (0.22 + depth * 0.64) - pointer.y * 4 * depth * pointer.velocity;
 
         rowPoints.push({
@@ -121,6 +124,7 @@ function initMatrixWave(canvasElement) {
           y: projectedY,
           depth,
           boost: velocityBoost,
+          energy: crestEnergy,
         });
       }
 
@@ -133,7 +137,7 @@ function initMatrixWave(canvasElement) {
     for (let row = 0; row < rows; row += 1) {
       for (let column = 0; column < columns; column += 1) {
         const point = points[row][column];
-        const alpha = 0.05 + point.depth * 0.34 + point.boost * 0.12;
+        const alpha = 0.04 + point.depth * 0.28 + point.energy * 0.2 + point.boost * 0.08;
         const phase = column * 0.36 + row * 0.72 + point.depth * 2.4;
 
         if (column < columns - 1) {
@@ -150,21 +154,13 @@ function initMatrixWave(canvasElement) {
       for (let column = 0; column < columns; column += 1) {
         const point = points[row][column];
         const phase = column * 0.4 + row * 0.8;
-        const glow = 0.12 + point.depth * 0.52 + point.boost * 0.16;
-        const radius = 0.5 + point.depth * 1.55 + point.boost * 0.55;
-        const sparkle = Math.sin(column * 0.82 + row * 1.17 - time * 5.2);
+        const glow = 0.08 + point.depth * 0.34 + point.energy * 0.42 + point.boost * 0.1;
+        const radius = 0.45 + point.depth * 1.3 + point.energy * 0.85 + point.boost * 0.35;
 
         context.beginPath();
         context.arc(point.x, point.y, radius, 0, Math.PI * 2);
-        context.fillStyle = waveColor(phase, point.depth, glow, point.boost);
+        context.fillStyle = waveColor(phase, point.depth, glow, point.boost, point.energy);
         context.fill();
-
-        if (sparkle > 0.95 && point.depth > 0.18) {
-          context.beginPath();
-          context.arc(point.x, point.y, radius + 1.8, 0, Math.PI * 2);
-          context.fillStyle = `rgba(252, 249, 248, ${(sparkle - 0.95) * 4.2})`;
-          context.fill();
-        }
       }
     }
 
