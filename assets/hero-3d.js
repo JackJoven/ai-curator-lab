@@ -79,10 +79,10 @@ function initMatrixWave(canvasElement) {
   const draw = () => {
     const isSmall = width < 760;
     const columns = clamp(Math.round(width / (isSmall ? 24 : 32)) + 18, isSmall ? 26 : 34, isSmall ? 34 : 50);
-    const rows = isSmall ? 20 : 30;
-    const horizon = height * (isSmall ? 0.28 : 0.24);
-    const floorHeight = height * 0.92;
-    const waveStrength = isSmall ? 34 : 54;
+    const rows = isSmall ? 24 : 36;
+    const horizon = height * (isSmall ? 0.34 : 0.32);
+    const floorHeight = height * 0.78;
+    const waveStrength = isSmall ? 28 : 44;
     const points = [];
 
     context.clearRect(0, 0, width, height);
@@ -99,11 +99,12 @@ function initMatrixWave(canvasElement) {
     for (let row = 0; row < rows; row += 1) {
       const rowPoints = [];
       const depth = row / (rows - 1);
+      const planeDepth = 1 - Math.cos(depth * Math.PI * 0.5);
       const fade = clamp(0.08 + Math.pow(depth, 0.95) * 0.92, 0.08, 1);
-      const screenY = horizon + Math.pow(depth, 1.28) * floorHeight;
-      const span = width * (0.86 + depth * 0.38);
-      const motionScale = 0.62 + depth * 0.38;
-      const rowDrift = Math.sin(depth * Math.PI * 1.6 + time * 0.58) * (8 + depth * 6);
+      const screenY = horizon + planeDepth * floorHeight;
+      const span = width * (0.96 + planeDepth * 0.22);
+      const motionScale = 0.38 + planeDepth * 0.62;
+      const rowDrift = Math.sin(depth * Math.PI * 1.25 + time * 0.48) * (3 + planeDepth * 7);
 
       for (let column = 0; column < columns; column += 1) {
         const progress = column / (columns - 1);
@@ -123,16 +124,17 @@ function initMatrixWave(canvasElement) {
         const pulse = Math.sin(distance * 1.18 - localTime * 1.45);
         const wake = Math.sin(pointerDistance * 7.2 - localTime * 4.4) * velocityBoost * waveStrength * 0.32;
         const lift = (transverse * 0.68 + cross * 0.42 + pulse * 0.28) * waveStrength + wake;
-        const longitudinalShift = (longitudinal * 13 + Math.sin(normalX * 3.2 - localTime * 0.86) * 5) * motionScale;
-        const longitudinalLift = Math.cos(row * 0.7 + normalX * 1.9 - localTime * 1.14) * 11 * motionScale;
+        const longitudinalShift = (longitudinal * 8 + Math.sin(normalX * 3.2 - localTime * 0.86) * 3) * motionScale;
+        const longitudinalLift = Math.cos(row * 0.7 + normalX * 1.9 - localTime * 1.14) * 6 * motionScale;
         const crestEnergy = clamp((lift / (waveStrength * 1.38) + 1) * 0.5, 0, 1);
         const screenX = baseX + longitudinalShift + pointer.x * 4 * pointer.velocity;
-        const projectedY = screenY - lift * (0.34 + depth * 0.22) + longitudinalLift - pointer.y * 4 * pointer.velocity;
+        const projectedY = screenY - lift * (0.16 + planeDepth * 0.28) + longitudinalLift - pointer.y * 4 * pointer.velocity;
 
         rowPoints.push({
           x: screenX,
           y: projectedY,
           depth,
+          planeDepth,
           boost: velocityBoost,
           energy: crestEnergy,
           fade,
@@ -157,7 +159,7 @@ function initMatrixWave(canvasElement) {
         }
 
         if (row < rows - 1) {
-          drawLine(point, points[row + 1][column], alpha * 0.7 * Math.min(point.fade, points[row + 1][column].fade), phase + 1.1);
+          drawLine(point, points[row + 1][column], alpha * 0.45 * Math.min(point.fade, points[row + 1][column].fade), phase + 1.1);
         }
       }
     }
